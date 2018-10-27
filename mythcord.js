@@ -20,7 +20,7 @@ const util = require('util');
 const crypto = require('crypto');
 
 const files = require("fs");
-const bot = new Discord.Client({disableEveryone: true});
+const work = new Discord.Client({disableEveryone: true});
 bot.commands = new Discord.Collection();
 
 var firstrun = 1;
@@ -39,27 +39,27 @@ files.readdir("./discord/commands/", (error, files) => {
   commandFile.forEach((file, int) =>{
     let properties = require(`./discord/commands/${file}`);
     console.log(`${file} commands has loaded!`);
-    bot.commands.set(props.help.name, properties);
+    work.commands.set(properties.help.name, properties);
   });
 });
 
 client.on('ready', () => {
     client.user.setStatus('dnd');
-    client.user.setActivity('We know "Chunibyo"!', {type: 'PLAYING'});
+    client.user.setActivity('I know about "Chunibyo"!', {type: 'PLAYING'});
     console.log("I am bot, is finally alive after processed!");
 });
 
 
 client.on('message', async message => {
     if (message.author.bot) return;
-    let botPrefix = config.prefix
+    let botPrefix = config.botPrefix
     
     let array = message.content.split(" ");
-    let command = messageArray[0];
-    let arguments = messageArray.slice(1);
+    let command = array[0];
+    let arguments = array.slice(1);
     
-    let commandFile = bot.commands.get(cmd.slice(prefix.length));
-    if (commandFile) commandfile.run(bot, message, arguments);
+    let commandFile = work.commands.get(command.slice(botPrefix.length));
+    if (commandFile) commandFile.run(work, message, arguments);
 
 });
 client.login(process.env.MYTHCORD);

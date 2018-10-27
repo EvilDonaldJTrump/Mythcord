@@ -45,7 +45,7 @@ client.on('message', message => {
 
       var command = message.content.split(" ")[0];
       command = string(command).chompLeft(config.prefix).s.toLowerCase();
-      console.log('An command ' + command + ' has been received from ' + message.author.username + ' in Discord app.);
+      console.log('An command ' + command + ' has been received from ' + message.author.username + ' in Discord app.');
       if (string(message.content).startsWith(config.prefix)) {
       
       var arguments = message.content.split(" ").slice(1);

@@ -88,4 +88,4 @@ function sendEmbed(channel, embed) {
     embed: embed
   });
 }
-client.login(process.env.MYTHCORD);
+client.login(process.env.BOT_TOKEN);

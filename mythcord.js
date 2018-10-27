@@ -45,16 +45,20 @@ client.on('message', message => {
             isSeconds = seconds % 60;
               
             var uptime = days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + Math.round(isSeconds) + ' seconds';
-            var stats = new library.SubFields()
+            var statstics = new library.SubFields()
               .addField('Total Servers', client.guilds.size)
               .addField('Total Channels', client.channels.size)
               .addField('Cached Users', client.users.size)
-              .addField('')
+              .addField(' ', ' ')
               .addField('Uptime', uptime)
               .addField('Memory RAM Usage', Math.round(process.memoryUsage().rss / 10485.76) / 100 + ' MB')
               .toString();
             var status = new Discord.RichEmbed()
-              .addField('Stats:', stats);
+              .setTitle('Mythcord')
+              .setDescription('Some usage & totals will counted in this status.')
+              .setColor('#15f153')
+              .addField('Bot Status', statstics);
+              .setFooter('Host: Heroku Services | Location: Malaysia')
             sendEmbed(message.channel, status);
             break;
         
@@ -66,9 +70,13 @@ client.on('message', message => {
             case 'help':
             message.reply('The command was sent to your Direct Message!');
             var help = new Discord.RichEmbed()
+              .setTitle('Mythcord | Help Commands')
+              .setDescription('Come to see some available commands here.')
+              .setColor('RANDOM')
               .addField('/help', 'Generate some available commands in DM user.')
               .addField('/8ball', 'Ask the magic 8Ball for a questions/answers.')
               .addField('/status', 'Display the statstics about this bot.')
+              .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});
            break;
          default:

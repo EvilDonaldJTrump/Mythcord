@@ -1,6 +1,6 @@
 {
   "prefix": "/",
-  "mainGuild": "505702626080587776"
+  "mainGuild": "505702626080587776",
   
   "eightBall": [
    "It is certain",
@@ -23,5 +23,5 @@
    "My sources say no",
    "Outlook not so good",
    "Very doubtful"
-  ]
+ ]
 }

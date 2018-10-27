@@ -51,6 +51,34 @@ client.on('message', message => {
       var arguments = message.content.split(" ").slice(1);
       var commandComplete = true;
       switch (command) {
+        case 'status':
+        var seconds = process.uptime();
+              
+        days = Math.floor(seconds / 86400);
+        seconds %= 86400;
+              
+        hours = Math.floor(seconds / 3600);
+        seconds %= 3600;
+              
+        minutes = Math.floor(seconds / 60);
+        seconds = seconds % 60;
+              
+        var uptime = days + ' days ' + hours + ' hours ' + minutes + ' minutes '  Math.round(seconds) + ' seconds';
+        var stats = new library.SubFields()
+          .addField('Total Servers', client.guilds.size)
+          .addField('Total Channels', client.channels.size)
+          .addField('Cached Users', client.users.size)
+          .addField('')
+          .addField('Uptime', uptime)
+          .addField('Memory RAM Usage', Math.round (process.memoryUsage().rss / 10485.76) / 100 + ' MB')
+          .toString();
+        var status = new Discord.RichEmbed()
+          .addField('Stats:', stats);
+        sendEmbed(message.channel, status);
+        break;
+        
+        case '8ball':
+        break;
       }
     }
 });

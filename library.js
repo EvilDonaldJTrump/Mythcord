@@ -17,7 +17,7 @@ const Discord = require('discord.js');
   }
 
   module.exports.UnrealEmbed = class UnrealEmbed {
-    constructor(title = false, description = false, rows = false, dots = '•', maxlength = 2048) { // 2048 to fit into a normal embed's description
+    constructor(title = false, description = false, rows = false, dots = '•', maxlength = 2048) {
       this.title = title;
       this.desc = description;
       this.rows = rows;
@@ -61,7 +61,7 @@ const Discord = require('discord.js');
   }
 
   module.exports.SubFields = class SubFields {
-    constructor(data = [], dots = '•') { // Example: new extras.SubFields()
+    constructor(data = [], dots = '•') {
       this.data = data;
       this.dots = dots;
     }

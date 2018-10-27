@@ -63,7 +63,7 @@ client.on('message', message => {
         minutes = Math.floor(seconds / 60);
         seconds = seconds % 60;
               
-        var uptime = days + ' days ' + hours + ' hours ' + minutes + ' minutes '  Math.round(seconds) + ' seconds';
+        var uptime = days + ' days ' + hours + ' hours ' + minutes + ' minutes ' + Math.round(seconds) + ' seconds';
         var stats = new library.SubFields()
           .addField('Total Servers', client.guilds.size)
           .addField('Total Channels', client.channels.size)

@@ -1,9 +1,0 @@
-# Git Ignore File
-# Official Mythcord Discord Bot
-
-# Configuration
-config-bot.json
-
-# NPM Package(s#
-node_modules/*
-package-lock.json

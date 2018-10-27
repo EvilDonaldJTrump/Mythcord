@@ -82,10 +82,10 @@ client.on('message', message => {
       }
    }
 });
+client.login(process.env.BOT_TOKEN);
 
 function sendEmbed(channel, embed) {
   channel.send ({
     embed: embed
   });
 }
-client.login(process.env.BOT_TOKEN);

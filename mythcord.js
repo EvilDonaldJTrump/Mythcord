@@ -10,9 +10,6 @@ var parseXml = require('xml2js') .parseString;
 
 var request = require('request');
 
-var apiai = require('apiai');
-var ai = apiai(config.apiai_token);
-
 const util = require('util');
 const crypto = require('crypto');
 
@@ -67,7 +64,7 @@ client.on('message', message => {
             break;
                 
             case 'help':
-            message.reply('Sent you a DM!');
+            message.reply('The command was sent to your Direct Message!');
             var help = new Discord.RichEmbed()
               .addField('/help', 'Generate some available commands in DM user.')
               .addField('/8ball', 'Ask the magic 8Ball for a questions/answers.')

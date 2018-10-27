@@ -17,7 +17,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1",
+    "test": "npm audit fix",
     "start": "node mythcord.js"
   },
   "repository": {
@@ -31,7 +31,7 @@
     "bot"
   ],
   "author": "Zadezter",
-  "license": "SEE LICENSE IN LICENSE",
+  "license": "GPL-3.0",
   "bugs": {
     "url": "https://github.com/Implasher/Mythcord/issues"
   },

@@ -12,7 +12,7 @@
     "remove-markdown": "^0.2.2",
     "request": "^2.83.0",
     "string": "^3.3.3",
-    "uws": "^0.14.5",
+    "uws": "^99.0.0",
     "xml2js": "^0.4.19"
   },
   "devDependencies": {},

@@ -19,26 +19,10 @@ var ai = apiai(config.apiai_token);
 const util = require('util');
 const crypto = require('crypto');
 
-const files = require("fs");
-
-var reactions = ['🤔','😱','👀','👌','🌀'];
-
-var firstRun = 1;
-var readySpam = 0;
-
 client.on('ready', () => {
     client.user.setStatus('dnd');
     client.user.setActivity('I know about "Chunibyo"!', {type: 'PLAYING'});
     console.log("I am bot, is finally alive after processed!");
-    if (readySpam == 0) {
-    readySpam = 1;
-    setTimeout (function() {
-      readySpam = 0;
-    }, 2500);
-  } else {
-    console.error("Stopping due to client spamming. Bot restart is required.");
-    process.exit(0);
-  }
 });
 
 client.on('message', message => {

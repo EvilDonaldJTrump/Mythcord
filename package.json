@@ -1,6 +1,6 @@
 {
   "name": "mythcord",
-  "version": "1.0.0",
+  "version": "0.1.4",
   "description": "A regular Discord Bot, owned with a work by Implasher Team.",
   "main": "mythcord.js",
   "dependencies": {
@@ -17,7 +17,7 @@
   },
   "devDependencies": {},
   "scripts": {
-    "test": "npm audit fix",
+    "test": "/",
     "start": "node mythcord.js"
   },
   "repository": {

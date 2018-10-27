@@ -1,0 +1,39 @@
+{
+  "name": "mythcord",
+  "version": "1.0.0",
+  "description": "A regular Discord Bot, owned with a work by Implasher Team.",
+  "main": "mythcord.js",
+  "dependencies": {
+    "apiai": "^4.0.3",
+    "discord.js": "^11.3.2",
+    "erlpack": "^0.1.0",
+    "forever": "^0.15.3",
+    "imgur": "^0.2.1",
+    "remove-markdown": "^0.2.2",
+    "request": "^2.83.0",
+    "string": "^3.3.3",
+    "uws": "^0.14.5",
+    "xml2js": "^0.4.19"
+  },
+  "devDependencies": {},
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "node mythcord.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/Implasher/Mythcord.git"
+  },
+  "keywords": [
+    "discord",
+    "heroku",
+    "malaysia",
+    "bot"
+  ],
+  "author": "Zadezter",
+  "license": "SEE LICENSE IN LICENSE",
+  "bugs": {
+    "url": "https://github.com/Implasher/Mythcord/issues"
+  },
+  "homepage": "https://github.com/Implasher/Mythcord#readme"
+}

@@ -4,9 +4,6 @@ const client = new Discord.Client();
 const config = require('./config-bot.json');
 const library = require('./library.js');
 
-var imgur = require('imgur');
-imgur.setClientId(config.imgurtoken);
-
 var string = require('string');
 const removeMd = require('remove-markdown');
 var parseXml = require('xml2js') .parseString;

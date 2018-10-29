@@ -64,6 +64,10 @@ client.on('message', message => {
         
             case '8ball':
             var random = Math.floor(Math.random() * config.eightBall.length);
+            if (!arguments[0]) {
+              message.reply("Sorry but I cannot answer to your blank question. :/")
+              return;
+            }
             message.reply(config.eightBall[random]);
             break;
                 

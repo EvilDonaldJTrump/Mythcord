@@ -49,22 +49,21 @@ client.on('message', message => {
               .addField('Total Servers', client.guilds.size)
               .addField('Total Channels', client.channels.size)
               .addField('Cached Users', client.users.size)
-              .addField(' ', ' ')
               .addField('Uptime', uptime)
               .addField('Memory RAM Usage', Math.round(process.memoryUsage().rss / 10485.76) / 100 + ' MB')
               .toString();
             var status = new Discord.RichEmbed()
               .setTitle('Status')
-              .setDescription('Some usage & totals will counted in this status.')
+              .setDescription('Shows a status and uptime of this bot.')
               .setColor('#15f153')
-              .addField('Bot Status', statstics)
+              .addField(statstics)
               .setFooter('Host: Heroku Services | Location: Malaysia')
             sendEmbed(message.channel, status);
             break;
         
             case '8ball':
             if (!arguments[0]) {
-              message.reply('Sorry but I cannot answer to your blank question. :/')
+              message.reply('Sorry but I cannot answer with your blank only. :/')
               return;
             }
             var random = Math.floor(Math.random() * config.eightBall.length);
@@ -73,12 +72,13 @@ client.on('message', message => {
                 
             case 'help':
             message.reply('The command was sent to your Direct Message!');
+            var random = Math.floor(Math.random() * config.helpFooter.length);
             var help = new Discord.RichEmbed()
               .setTitle('Commands')
               .setDescription('Come to see some available commands here.')
               .setColor('RANDOM')
               .addField('/help', 'Generate some available commands in DM user.')
-              .addField('/8ball', 'Ask the magic 8Ball for a questions/answers.')
+              .addField('/8ball', 'Ask the magic 8Ball with your questions/answers!')
               .addField('/status', 'Display the statstics about this bot.')
               .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});

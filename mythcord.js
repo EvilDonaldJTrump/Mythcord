@@ -15,7 +15,7 @@ const crypto = require('crypto');
 
 client.on('ready', () => {
     client.user.setStatus('dnd');
-    client.user.setActivity('I know about "Chunibyo"!', {type: 'PLAYING'});
+    client.user.setActivity('I know about "Chunibyo" powers!', {type: 'PLAYING'});
     console.log("I am bot, is finally alive after processed!");
 });
 
@@ -54,7 +54,7 @@ client.on('message', message => {
               .addField('Memory RAM Usage', Math.round(process.memoryUsage().rss / 10485.76) / 100 + ' MB')
               .toString();
             var status = new Discord.RichEmbed()
-              .setTitle('Mythcord')
+              .setTitle('Status')
               .setDescription('Some usage & totals will counted in this status.')
               .setColor('#15f153')
               .addField('Bot Status', statstics);
@@ -74,7 +74,7 @@ client.on('message', message => {
             case 'help':
             message.reply('The command was sent to your Direct Message!');
             var help = new Discord.RichEmbed()
-              .setTitle('Mythcord | Help Commands')
+              .setTitle('Commands')
               .setDescription('Come to see some available commands here.')
               .setColor('RANDOM')
               .addField('/help', 'Generate some available commands in DM user.')

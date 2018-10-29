@@ -56,7 +56,7 @@ client.on('message', message => {
               .setTitle('Status')
               .setDescription('Shows a status and uptime of this bot.')
               .setColor('#15f153')
-              .addField(statstics)
+              .addField(' ', statstics)
               .setFooter('Host: Heroku Services | Location: Malaysia')
             sendEmbed(message.channel, status);
             break;

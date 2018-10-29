@@ -57,7 +57,7 @@ client.on('message', message => {
               .setTitle('Status')
               .setDescription('Some usage & totals will counted in this status.')
               .setColor('#15f153')
-              .addField('Bot Status', statstics);
+              .addField('Bot Status', statstics)
               .setFooter('Host: Heroku Services | Location: Malaysia')
             sendEmbed(message.channel, status);
             break;

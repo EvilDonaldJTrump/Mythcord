@@ -88,9 +88,9 @@ client.on('message', message => {
               message.reply('You cannot mention user to check ping. Oh wait, you made the user gets triggered or angry.')
               return;
             }
-            let ping = Math.round(client.ping)
+            let pings = Math.round(client.ping)
             .setTitle('Ping')
-            .addField('Connection Status', '📡 **${ping}**__ms__')
+            .addField('Connection Status', '📡 **${pings}**__ms__')
             break;
                 
             case 'help':

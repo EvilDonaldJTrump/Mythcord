@@ -75,20 +75,20 @@ client.on('message', message => {
               message.reply('Hey, you have no mention user and this cannot work.')
               return;
             }
-            let user = message.mentions.users.first();
-            let percentage = Math.floor(Math.random() * 100)
+            var user = message.mentions.users.first();
+            var percentage = Math.floor(Math.random() * 100)
             .setAuthor('${user.username}')
             .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
             .setFooter('${message.author.tag} has requested this.')
             break;
                   
             case 'ping':
-            let user = message.mentions.users.first();
+            var user = message.mentions.users.first();
             if (!arguments[0] && !user) {
               message.reply('You cannot mention user to check ping. Oh wait, you made the user gets triggered or angry.')
               return;
             }
-            let pings = Math.round(client.ping)
+            var pings = Math.round(client.ping)
             .setTitle('Ping')
             .addField('Connection Status', '📡 **${pings}**__ms__')
             break;

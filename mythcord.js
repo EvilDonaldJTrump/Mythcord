@@ -87,7 +87,7 @@ client.on('message', message => {
               message.reply('You cannot mention user or text for check ping. Oh wait, you made the user gets triggered or angry. Also, text is no needed.')
               return;
             }
-            let user =message.mentions.members.first();
+            let user = message.mentions.members.first();
             var pings = Math.round(message.author.ping)
             .setTitle('${user.username} - Ping')
             .addField('Connection Status', '📡 **${pings}**__ms__')

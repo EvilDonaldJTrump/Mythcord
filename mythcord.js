@@ -75,7 +75,7 @@ client.on('message', message => {
               message.reply('Hey, you have no mention user and this cannot work.')
               return;
             }
-            var user = message.mentions.users.first();
+            let user = message.mentions.members.first();
             var percentage = Math.floor(Math.random() * 100)
             .setAuthor('${user.username}')
             .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
@@ -83,13 +83,13 @@ client.on('message', message => {
             break;
                   
             case 'ping':
-            var user = message.mentions.users.first();
-            if (!arguments[0] && !user) {
-              message.reply('You cannot mention user to check ping. Oh wait, you made the user gets triggered or angry.')
+            if (!arguments[0] && message.mentions.members.size == 0) {
+              message.reply('You cannot mention user or text for check ping. Oh wait, you made the user gets triggered or angry. Also, text is no needed.')
               return;
             }
-            var pings = Math.round(client.ping)
-            .setTitle('Ping')
+            let user =message.mentions.members.first();
+            var pings = Math.round(message.author.ping)
+            .setTitle('${user.username} - Ping')
             .addField('Connection Status', '📡 **${pings}**__ms__')
             break;
                 
@@ -103,7 +103,7 @@ client.on('message', message => {
               .addField('/help', 'Generate some available commands in DM user.')
               .addField('/8ball', 'Ask the magic 8Ball with your questions/answers!')
               .addField('/status', 'Display the statstics about this bot.')
-              .addField('/gayrate', 'Mention user to show the gay percentage rate!')
+              .addField('/gayrate <@user>', 'Mention user to show the gay percentage rate!')
               .addField('/ping', 'Check your connection status with the command')
               .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});

@@ -28,7 +28,8 @@ client.on('message', message => {
         console.log('An command ' + command + ' has been received from ' + message.author.username + ' in Discord app.');
         if (string(message.content).startsWith(config.prefix)) {
           if (message.guild.id == config.mainGuild) return;
-      
+         
+          var user = message.mentions.members.first();
           var arguments = message.content.split(" ").slice(1);
           var commandComplete = true;
           switch (command) {
@@ -71,26 +72,26 @@ client.on('message', message => {
             break;
                   
             case 'gayrate':
-            if (!arguments[0]) {
-              message.reply('Hey, you have no mention user and this cannot work.')
+            if (!arguments[0] && message.mentions.member.size == 0) {
+              message.reply('Hey, you have no mention user and saw a text or blank. This cannot work.')
               return;
+            } else if (!message.mentions.member.size == 0) {
+              var percentage = Math.floor(Math.random() * 100)
+              .setAuthor('${user.username}')
+              .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
+              .setFooter('${message.author.tag} has requested this.')
             }
-            let user = message.mentions.members.first();
-            var percentage = Math.floor(Math.random() * 100)
-            .setAuthor('${user.username}')
-            .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
-            .setFooter('${message.author.tag} has requested this.')
             break;
                   
             case 'ping':
             if (!arguments[0] && message.mentions.members.size == 0) {
               message.reply('You cannot mention user or text for check ping. Oh wait, you made the user gets triggered or angry. Also, text is no needed.')
               return;
+            } else if (!message.mentions.member.size == 0) {
+              var pings = Math.round(message.author.ping)
+              .setTitle('${user.username} - Ping')
+              .addField('Connection Status', '📡 **${pings}**__ms__')
             }
-            let user = message.mentions.members.first();
-            var pings = Math.round(message.author.ping)
-            .setTitle('${user.username} - Ping')
-            .addField('Connection Status', '📡 **${pings}**__ms__')
             break;
                 
             case 'help':

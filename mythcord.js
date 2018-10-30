@@ -69,6 +69,29 @@ client.on('message', message => {
             var random = Math.floor(Math.random() * config.eightBall.length);
             message.reply(config.eightBall[random]);
             break;
+                  
+            case 'gayrate':
+            if (!arguments[0]) {
+              message.reply('Hey, you have no mention user and this cannot work.')
+              return;
+            }
+            let user = message.mentions.users.first();
+            let percentage = Math.floor(Math.random() * 100)
+            .setAuthor('${user.username}')
+            .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
+            .setFooter('${message.author.tag} has requested this.')
+            break;
+                  
+            case 'ping':
+            let user = message.mentions.users.first();
+            if (!arguments[0] && !user) {
+              message.reply('You cannot mention user to check ping. Oh wait, you made the user gets triggered or angry.')
+              return;
+            }
+            let ping = Math.round(client.ping)
+            .setTitle('Ping')
+            .addField('Connection Status', '📡 **${ping}**__ms__')
+            break;
                 
             case 'help':
             message.reply('The command was sent to your Direct Message!');
@@ -80,6 +103,8 @@ client.on('message', message => {
               .addField('/help', 'Generate some available commands in DM user.')
               .addField('/8ball', 'Ask the magic 8Ball with your questions/answers!')
               .addField('/status', 'Display the statstics about this bot.')
+              .addField('/gayrate', 'Mention user to show the gay percentage rate!')
+              .addField('/ping', 'Check your connection status with the command')
               .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});
            break;

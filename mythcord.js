@@ -30,6 +30,7 @@ client.on('message', message => {
           if (message.guild.id == config.mainGuild) return;
          
           var user = message.mentions.members.first();
+          var member = user || message.guild.members.get(arguments[0]);
           var arguments = message.content.split(" ").slice(1);
           var commandComplete = true;
           switch (command) {
@@ -72,10 +73,10 @@ client.on('message', message => {
             break;
                   
             case 'gayrate':
-            if (!arguments[0] && message.mentions.member.size == 0) {
+            if (!arguments[0] || !member) {
               message.reply('Hey, you have no mention user and saw a text or blank. This cannot work.')
               return;
-            } else if (!message.mentions.member.size == 0) {
+            } else if (member) {
               var percentage = Math.floor(Math.random() * 100)
               .setAuthor('${user.username}')
               .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
@@ -84,10 +85,10 @@ client.on('message', message => {
             break;
                   
             case 'ping':
-            if (!arguments[0] && message.mentions.members.size == 0) {
+            if (!arguments[0] || !member) {
               message.reply('You cannot mention user or text for check ping. Oh wait, you made the user gets triggered or angry. Also, text is no needed.')
               return;
-            } else if (!message.mentions.member.size == 0) {
+            } else if (member) {
               var pings = Math.round(message.author.ping)
               .setTitle('${user.username} - Ping')
               .addField('Connection Status', '📡 **${pings}**__ms__')

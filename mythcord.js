@@ -64,13 +64,13 @@ client.on('message', async message => {
             break;
         
             case '8ball':
-            if (!arguments[0]) return message.reply('Sorry but I cannot answer with your blank only. :/');
+            if (!arguments[0]) return message.reply('Sorry, you sent a blank text. So I cannot answer. :/');
             var random = Math.floor(Math.random() * config.eightBall.length);
             message.reply(config.eightBall[random]);
             break;
                   
             case 'gayrate':
-            if (!member) return message.reply('Hey, no mentioned user detected. This cannot work.');
+            if (!member) return message.reply('Excuse me, please mention the user or bot.');
             var gayRate = new Discord.RichEmbed()
             .addField('' + member.displayName + '', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay :gay_pride_flag:')
             .setFooter(`Requested by ${message.author.username}`, `${message.author.avatarURL}`);
@@ -78,7 +78,7 @@ client.on('message', async message => {
             break;
                   
             case 'ping':
-            if (member) return message.reply('No need to mention user in argument. But wait, you made the user getting angry! Shame on you!');
+            if (member) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
             if (message.content.indexOf(process.env.MYTHCORD_PREFIX) !== 0) return;
             var pingUser = arguments.slice[22];
             var apiPing = new Date();
@@ -87,7 +87,7 @@ client.on('message', async message => {
             
             var ping1 = Math.floor(client.ping)
             var ping2 = Math.floor(botPing)
-            var ping3 = Math.round(message.author.ping)
+            var ping3 = Math.round(member.ping)
             var pingRich = new Discord.RichEmbed()
             .setTitle('Ping')
             .setDescription('Connection Status')
@@ -96,7 +96,7 @@ client.on('message', async message => {
             .addField('📡 Network', '**' + ping3 + '** ms')
             .setTimestamp(new Date())
             .setColor("RANDOM")
-            .setFooter(`On ${message.author.username} Status`, `${message.author.avatarURL}`);
+            .setFooter(`Status: ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, pingRich);
             break;
                 

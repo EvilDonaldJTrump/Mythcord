@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
-const config = require('./config-bot.json');
-const library = require('./library.js');
+const config = require('./discord/config-bot.json');
+const library = require('./discord/library.js');
 
 var string = require('string');
 const removeMd = require('remove-markdown');
@@ -16,7 +16,7 @@ const crypto = require('crypto');
 client.on('ready', () => {
     client.user.setStatus('dnd');
     client.user.setActivity('I know about "Chunibyo" powers!', {type: 'PLAYING'});
-    console.log("I am bot, is finally alive after processed!");
+    console.log("I am bot, is now finally alive after processed!");
 });
 
 client.on('message', async message => {

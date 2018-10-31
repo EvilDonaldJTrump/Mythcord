@@ -93,7 +93,7 @@ client.on('message', async message => {
             .setDescription('Connection Status')
             .addField('💻 API', '**' + ping1 + '** ms')
             .addField('🤖 Mythcord', '**' + ping2 + '** ms')
-            .addField('📡 Network', '**' + ping3 - Date.now() + '** ms')
+            .addField('📡 Network', '**' + ping3 + '** ms')
             .setTimestamp(new Date())
             .setColor("RANDOM")
             .setFooter(`Status: ${message.author.username}`, `${message.author.avatarURL}`);
@@ -101,7 +101,7 @@ client.on('message', async message => {
             break;
                 
             case 'help':
-            message.reply('The command was sent to your Direct Message!');
+            message.reply('The command was sent to your Direct Message. Go see it.');
             var random = Math.floor(Math.random() * config.helpFooter.length);
             var help = new Discord.RichEmbed()
               .setTitle('Commands')

@@ -19,7 +19,7 @@ client.on('ready', () => {
     console.log("I am bot, is finally alive after processed!");
 });
 
-client.on('message', message => {
+client.on('message', async message => {
     if (message.author.bot) return;
     if (string(message.content).startsWith(process.env.MYTHCORD_PREFIX)) {
 

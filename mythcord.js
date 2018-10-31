@@ -21,17 +21,17 @@ client.on('ready', () => {
 
 client.on('message', message => {
     if (message.author.bot) return;
-    if (string(message.content).startsWith(config.prefix)) {
+    if (string(message.content).startsWith(process.env.MYTHCORD_PREFIX)) {
 
         var command = message.content.split(" ")[0];
-        command = string(command).chompLeft(config.prefix).s.toLowerCase();
-        console.log('An command ' + command + ' has been received from ' + message.author.username + ' in Discord app.');
-        if (string(message.content).startsWith(config.prefix)) {
-          if (message.guild.id == config.mainGuild) return;
+        command = string(command).chompLeft(process.env.MYTHCORD_PREFIX).s.toLowerCase();
+        console.log('An command ' + command + ' has been received from ' + message.author.username + ' in Discord app.');        
+        if (string(message.content).startsWith(process.env.MYTHCORD_PREFIX)) {
+          if (message.guild.id == process.env.MYTHCORD_GUILD) return;
          
           var user = message.mentions.members.first();
-          var member = user || message.guild.members.get(arguments[0]);
           var arguments = message.content.split(" ").slice(1);
+          var member = user || message.guild.members.get(arguments[0]);
           var commandComplete = true;
           switch (command) {
             case 'status':
@@ -59,7 +59,7 @@ client.on('message', message => {
               .setDescription('Shows a status and uptime of this bot.')
               .setColor('#15f153')
               .addField('^ ^ ^', statstics)
-              .setFooter('Host: Heroku Services | Location: Malaysia')
+              .setFooter('Host: Heroku Services | Location: Malaysia => ${message.author.avatarURL}');
             sendEmbed(message.channel, status);
             break;
         
@@ -73,26 +73,40 @@ client.on('message', message => {
             break;
                   
             case 'gayrate':
-            if (!arguments[0] || !member) {
+            if (!member) {
               message.reply('Hey, you have no mention user and saw a text or blank. This cannot work.')
               return;
-            } else if (member) {
+            }
+            if (member) {
+              var gayRate = new Discord.RichEmbed()
               var percentage = Math.floor(Math.random() * 100)
               .setAuthor('${user.username}')
               .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
-              .setFooter('${message.author.tag} has requested this.')
+              .setFooter('${message.author.username}', '${message.author.avatarURL} requested this.');
+              return;
             }
+            message.author.send("", {embed: gayRate});
             break;
                   
             case 'ping':
-            if (!arguments[0] || !member) {
-              message.reply('You cannot mention user or text for check ping. Oh wait, you made the user gets triggered or angry. Also, text is no needed.')
-              return;
-            } else if (member) {
-              var pings = Math.round(message.author.ping)
-              .setTitle('${user.username} - Ping')
-              .addField('Connection Status', '📡 **${pings}**__ms__')
-            }
+            var pingUser = args.slice[22];
+            var apiPing = new Date();
+            var botPing = new Date() - message.createdAt;
+            var ownPing = new Date() - apiPing;
+            
+            var ping1 = Math.floor(client.ping)
+            var ping2 = Math.floor(botPing)
+            var ping3 = new Date().getTime()
+            var pingRich = new Discord.RichEmbed()
+            .setTitle('Ping')
+            .setDescription('Current Connection Status')
+            .addField('API - ', '**' + ping1 + '**ms')
+            .addField('Mythcord - ', '**' + ping2 + '**ms')
+            .addField('${user.username} - ', '**' + ping3 - message.createdTimestamp + '**ms')
+            .setTimestamp(new Date())
+            .setColor("RANDOM")
+            .setFooter('${message.author.username}', '${message.author.avatarURL} requested this.');
+            message.author.send("", {embed: pingRich});
             break;
                 
             case 'help':
@@ -111,7 +125,7 @@ client.on('message', message => {
             message.author.send("", {embed: help});
            break;
          default:
-          if (message.guild.id == config.mainGuild) {
+          if (message.guild.id == process.env.MYTHCORD_GUILD) {
             commandComplete = false;
           }
           break;
@@ -119,7 +133,7 @@ client.on('message', message => {
       }
    }
 });
-client.login(process.env.BOT_TOKEN);
+client.login(process.env.MYTHCORD_TOKEN);
 
 function sendEmbed(channel, embed) {
   channel.send ({

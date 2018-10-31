@@ -25,7 +25,7 @@ client.on('message', async message => {
 
         var command = message.content.split(" ")[0];
         command = string(command).chompLeft(process.env.MYTHCORD_PREFIX).s.toLowerCase();
-        console.log('An command ' + command + ' has been received from ' + message.author.username + ' in Discord app.');        
+        console.log('A command ' + command + ' has been received from ' + message.author.username + ' in Discord app.');        
         if (string(message.content).startsWith(process.env.MYTHCORD_PREFIX)) {
           if (message.guild.id == process.env.MYTHCORD_GUILD) return;
          
@@ -72,7 +72,7 @@ client.on('message', async message => {
             case 'gayrate':
             if (!member) return message.reply('Hey, no mentioned user detected. This cannot work.');
             var gayRate = new Discord.RichEmbed()
-            .addField('' + member.member.user.tag + '', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay! :gay_pride_flag:')
+            .addField('' + member.user.tag + '', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay! :gay_pride_flag:')
             .setFooter(`Requested by ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, gayRate);
             break;

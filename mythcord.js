@@ -76,8 +76,8 @@ client.on('message', async message => {
               return message.reply('Hey, no mentioned user detected. This cannot work.');
             }
             var gayRate = new Discord.RichEmbed()
-            .addField('^ ^ ^', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay! :gay_pride_flag:')
-            .setFooter(`To ${message.author.username}`, `${message.author.avatarURL}`);
+            .addField('${message.member.username}', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay! :gay_pride_flag:')
+            .setFooter(`To ${message.member.username}`, `${message.member.avatarURL}`);
             sendEmbed(message.channel, gayRate);
             break;
                   

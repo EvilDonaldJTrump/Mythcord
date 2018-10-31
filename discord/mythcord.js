@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
-const config = require('./discord/config-bot.json');
-const library = require('./discord/library.js');
+const config = require('discord/config-bot.json');
+const library = require('discord/library.js');
 
 var string = require('string');
 const removeMd = require('remove-markdown');

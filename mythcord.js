@@ -88,7 +88,7 @@ client.on('message', async message => {
             break;
                   
             case 'ping':
-            if (message.content.indexOf(process.env.MYTHCORD_PREFIX !==0) return;
+            if (message.content.indexOf(process.env.MYTHCORD_PREFIX !== 0) return;
             var pingUser = arguments.slice[22];
             var apiPing = new Date();
             var botPing = new Date() - message.createdAt;

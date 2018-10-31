@@ -72,7 +72,7 @@ client.on('message', async message => {
             case 'gayrate':
             if (!member) return message.reply('Hey, no mentioned user detected. This cannot work.');
             var gayRate = new Discord.RichEmbed()
-            .addField('' + member.member.username + '', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay! :gay_pride_flag:')
+            .addField('' + member.member.user.tag + '', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay! :gay_pride_flag:')
             .setFooter(`Requested by ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, gayRate);
             break;
@@ -96,7 +96,7 @@ client.on('message', async message => {
             .addField('📡 Network', '**' + ping3 + '** ms')
             .setTimestamp(new Date())
             .setColor("RANDOM")
-            .setFooter(`To Status Of ${message.author.username}`, `${message.author.avatarURL}`);
+            .setFooter(`On ${message.author.username} Status`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, pingRich);
             break;
                 

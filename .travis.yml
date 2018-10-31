@@ -11,10 +11,5 @@ script:
   - npm test
   - node mythcord.js
 
-deploy:
-  provider: heroku
-  app: Mythcord
-  on: Discord
-  
 notifications:
   email: false

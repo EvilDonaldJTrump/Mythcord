@@ -31,7 +31,7 @@ client.on('message', async message => {
          
           var user = message.mentions.members.first();
           var arguments = message.content.split(" ").slice(1);
-          var member = user || message.guild.members.get(arguments[0]) || message.member; 
+          var member = user || message.guild.members.get(arguments[0]); 
           var commandComplete = true;
           switch (command) {
             case 'status':
@@ -73,7 +73,7 @@ client.on('message', async message => {
             if (!member) return message.reply('Hey, no mentioned user detected. This cannot work.');
             var gayRate = new Discord.RichEmbed()
             .addField('[' + message.member.user.tag + ']', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay! :gay_pride_flag:')
-            .setFooter(`Requested by ${message.user.username}`, `${message.user.avatarURL}`);
+            .setFooter(`Requested by ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, gayRate);
             break;
                   

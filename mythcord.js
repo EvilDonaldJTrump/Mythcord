@@ -59,7 +59,7 @@ client.on('message', async message => {
               .setDescription('Shows a status and uptime of this bot.')
               .setColor('#15f153')
               .addField('^ ^ ^', statstics)
-              .setFooter(`Host: Heroku Services | Location: Malaysia => ${message.author.avatarURL}`);
+              .setFooter(`Host: Heroku Services | Location: Malaysia`);
             sendEmbed(message.channel, status);
             break;
         
@@ -80,8 +80,7 @@ client.on('message', async message => {
             if (member) {
               var gayRate = new Discord.RichEmbed()
               var percentage = Math.floor(Math.random() * 100)
-              .setAuthor(`${message.author.username}`)
-              .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
+              .addField('${member.username}', '__${percentage}__/**100** Gay! :gay_pride_flag:')
               .setFooter(`${message.author.username}`, `${message.author.avatarURL} requested this.`);
               return;
             }
@@ -89,6 +88,7 @@ client.on('message', async message => {
             break;
                   
             case 'ping':
+            if (message.content.indexOf(process.env.MYTHCORD_PREFIX !==0) return;
             var pingUser = arguments.slice[22];
             var apiPing = new Date();
             var botPing = new Date() - message.createdAt;

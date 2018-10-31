@@ -1,1 +1,1 @@
-worker: node mythcord.js
+worker: node discord/mythcord.js

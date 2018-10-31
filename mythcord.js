@@ -1,8 +1,8 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
-const config = require('config-bot.json');
-const library = require('library.js');
+const config = require('./config-bot.json');
+const library = require('./library.js');
 
 var string = require('string');
 const removeMd = require('remove-markdown');
@@ -72,7 +72,7 @@ client.on('message', async message => {
             case 'gayrate':
             if (!member) return message.reply('Hey, no mentioned user detected. This cannot work.');
             var gayRate = new Discord.RichEmbed()
-            .addField('' + member.displayname + '', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay :gay_pride_flag:')
+            .addField('' + member.displayName + '', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay :gay_pride_flag:')
             .setFooter(`Requested by ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, gayRate);
             break;

@@ -79,8 +79,9 @@ client.on('message', message => {
             }
             if (member) {
               var gayRate = new Discord.RichEmbed()
+              var person = message.mentions.users.first() || message.author;
               var percentage = Math.floor(Math.random() * 100)
-              .setAuthor('${user.username}')
+              .setAuthor('${person.username}')
               .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
               .setFooter('${message.author.username}', '${message.author.avatarURL} requested this.');
               return;

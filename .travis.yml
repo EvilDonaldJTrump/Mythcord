@@ -13,7 +13,6 @@ script:
 
 deploy:
   provider: heroku
-  api_key: $HEROKU_API
   app: Mythcord
   on: Discord
   

@@ -2,7 +2,7 @@
   "name": "mythcord",
   "version": "0.1.4",
   "description": "A regular Discord Bot, owned with a work by Implasher Team.",
-  "main": "mythcord.js",
+  "main": "discord/mythcord.js",
   "dependencies": {
     "apiai": "^4.0.3",
     "discord.js": "^11.3.2",
@@ -18,7 +18,7 @@
   "devDependencies": {},
   "scripts": {
     "test": "/",
-    "start": "node mythcord.js"
+    "start": "node discord/mythcord.js"
   },
   "repository": {
     "type": "git",

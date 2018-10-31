@@ -77,7 +77,7 @@ client.on('message', async message => {
             }
             var gayRate = new Discord.RichEmbed()
             var percentage = Math.floor(Math.random() * 100)
-            .addField('^ ^ ^', '__' + percentage} + '__/**100** Gay! :gay_pride_flag:')
+            .addField('^ ^ ^', '__' + percentage + '__/**100** Gay! :gay_pride_flag:')
             .setFooter(`To ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, gayRate);
             break;

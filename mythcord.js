@@ -89,7 +89,7 @@ client.on('message', message => {
             break;
                   
             case 'ping':
-            var pingUser = args.slice[22];
+            var pingUser = arguments.slice[22];
             var apiPing = new Date();
             var botPing = new Date() - message.createdAt;
             var ownPing = new Date() - apiPing;

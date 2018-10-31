@@ -80,8 +80,8 @@ client.on('message', async message => {
             if (member) {
               var gayRate = new Discord.RichEmbed()
               var percentage = Math.floor(Math.random() * 100)
-              .addField('${member.username}', '__${percentage}__/**100** Gay! :gay_pride_flag:')
-              .setFooter(`${message.author.username}`, `${message.author.avatarURL} requested this.`);
+              .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
+              .setFooter(`To ${message.author.username}`, `${message.author.avatarURL}`);
               return;
             }
             message.author.send(gayRate);
@@ -102,10 +102,10 @@ client.on('message', async message => {
             .setDescription('Current Connection Status')
             .addField('API - ', '**' + ping1 + '**ms')
             .addField('Mythcord - ', '**' + ping2 + '**ms')
-            .addField('${message.author.username} - ', '**' + ping3 - message.createdTimestamp + '**ms')
+            .addField('Network - ', '**' + ping3 - message.createdTimestamp + '**ms')
             .setTimestamp(new Date())
             .setColor("RANDOM")
-            .setFooter(`${message.author.username}`, `${message.author.avatarURL} requested this.`);
+            .setFooter(`To ${message.author.username}`, `${message.author.avatarURL}`);
             await message.author.send(pingRich);
             break;
                 

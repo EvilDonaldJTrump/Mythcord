@@ -81,7 +81,7 @@ client.on('message', async message => {
             var percentage = Math.floor(Math.random() * 100)
             .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
             .setFooter(`To ${message.author.username}`, `${message.author.avatarURL}`);
-            message.author.send(gayRate);
+            sendEmbed(message.channel, gayRate);
             break;
                   
             case 'ping':
@@ -103,7 +103,7 @@ client.on('message', async message => {
             .setTimestamp(new Date())
             .setColor("RANDOM")
             .setFooter(`To ${message.author.username}`, `${message.author.avatarURL}`);
-            message.author.send(pingRich);
+            sendEmbed(message.channel, pingRich);
             break;
                 
             case 'help':

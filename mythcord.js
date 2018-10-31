@@ -77,13 +77,10 @@ client.on('message', async message => {
               message.reply('Hey, you have no mention user and saw a text or blank. This cannot work.')
               return;
             }
-            if (member) {
-              var gayRate = new Discord.RichEmbed()
-              var percentage = Math.floor(Math.random() * 100)
-              .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
-              .setFooter(`To ${message.author.username}`, `${message.author.avatarURL}`);
-              return;
-            }
+            var gayRate = new Discord.RichEmbed()
+            var percentage = Math.floor(Math.random() * 100)
+            .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
+            .setFooter(`To ${message.author.username}`, `${message.author.avatarURL}`);
             message.author.send(gayRate);
             break;
                   
@@ -96,17 +93,17 @@ client.on('message', async message => {
             
             var ping1 = Math.floor(client.ping)
             var ping2 = Math.floor(botPing)
-            var ping3 = new Date().getTime()
+            var ping3 = Math.round(message.author.ping)
             var pingRich = new Discord.RichEmbed()
             .setTitle('Ping')
-            .setDescription('Current Connection Status')
-            .addField('API - ', '**' + ping1 + '**ms')
-            .addField('Mythcord - ', '**' + ping2 + '**ms')
-            .addField('Network - ', '**' + ping3 - message.createdTimestamp + '**ms')
+            .setDescription('${message.author.username} - Connection Status')
+            .addField('💻 API - ', '**' + ping1 + '** ms')
+            .addField('🤖 Mythcord - ', '**' + ping2 + '** ms')
+            .addField('📡 Network - ', '**' + ping3 + '** ms')
             .setTimestamp(new Date())
             .setColor("RANDOM")
             .setFooter(`To ${message.author.username}`, `${message.author.avatarURL}`);
-            await message.author.send(pingRich);
+            message.author.send(pingRich);
             break;
                 
             case 'help':

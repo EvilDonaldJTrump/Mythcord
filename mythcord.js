@@ -87,13 +87,13 @@ client.on('message', async message => {
             
             var ping1 = Math.floor(client.ping)
             var ping2 = Math.floor(botPing)
-            var ping3 = Math.round(member.ping)
+            var ping3 = Math.round(message.author.ping)
             var pingRich = new Discord.RichEmbed()
             .setTitle('Ping')
             .setDescription('Connection Status')
             .addField('💻 API', '**' + ping1 + '** ms')
             .addField('🤖 Mythcord', '**' + ping2 + '** ms')
-            .addField('📡 Network', '**' + ping3 + '** ms')
+            .addField('📡 Network', '**' + ping3 - Date.now() + '** ms')
             .setTimestamp(new Date())
             .setColor("RANDOM")
             .setFooter(`Status: ${message.author.username}`, `${message.author.avatarURL}`);

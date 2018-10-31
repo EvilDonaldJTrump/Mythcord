@@ -65,8 +65,7 @@ client.on('message', async message => {
         
             case '8ball':
             if (!arguments[0]) {
-              message.reply('Sorry but I cannot answer with your blank only. :/')
-              return;
+              return message.reply('Sorry but I cannot answer with your blank only. :/');
             }
             var random = Math.floor(Math.random() * config.eightBall.length);
             message.reply(config.eightBall[random]);
@@ -74,9 +73,9 @@ client.on('message', async message => {
                   
             case 'gayrate':
             if (!member) {
-              message.reply('Hey, you have no mention user and saw a text or blank. This cannot work.')
-              return;
+              return message.reply('Hey, you have no mention user and saw a text or blank. This cannot work.');
             }
+            await member;
             var gayRate = new Discord.RichEmbed()
             var percentage = Math.floor(Math.random() * 100)
             .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
@@ -85,6 +84,9 @@ client.on('message', async message => {
             break;
                   
             case 'ping':
+            if (!arguments[0] || !member) {
+              return message.reply('No need to mention user or put a text in argument. But wait, you made the user getting angry after being online');
+            }
             if (message.content.indexOf(process.env.MYTHCORD_PREFIX) !== 0) return;
             var pingUser = arguments.slice[22];
             var apiPing = new Date();
@@ -96,7 +98,7 @@ client.on('message', async message => {
             var ping3 = Math.round(message.author.ping)
             var pingRich = new Discord.RichEmbed()
             .setTitle('Ping')
-            .setDescription('${message.author.username} - Connection Status')
+            .setDescription('Connection Status')
             .addField('💻 API - ', '**' + ping1 + '** ms')
             .addField('🤖 Mythcord - ', '**' + ping2 + '** ms')
             .addField('📡 Network - ', '**' + ping3 + '** ms')

@@ -59,7 +59,7 @@ client.on('message', message => {
               .setDescription('Shows a status and uptime of this bot.')
               .setColor('#15f153')
               .addField('^ ^ ^', statstics)
-              .setFooter('Host: Heroku Services | Location: Malaysia => ${message.author.avatarURL}');
+              .setFooter(`Host: Heroku Services | Location: Malaysia => ${message.author.avatarURL}`);
             sendEmbed(message.channel, status);
             break;
         
@@ -80,12 +80,12 @@ client.on('message', message => {
             if (member) {
               var gayRate = new Discord.RichEmbed()
               var percentage = Math.floor(Math.random() * 100)
-              .setAuthor('${message.author.username}')
+              .setAuthor(`${message.author.username}`)
               .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
-              .setFooter('${message.author.username}', '${message.author.avatarURL} requested this.');
+              .setFooter(`${message.author.username}`, `${message.author.avatarURL} requested this.`);
               return;
             }
-            message.author.send("", {embed: gayRate});
+            message.author.send(gayRate);
             break;
                   
             case 'ping':
@@ -105,8 +105,8 @@ client.on('message', message => {
             .addField('${message.author.username} - ', '**' + ping3 - message.createdTimestamp + '**ms')
             .setTimestamp(new Date())
             .setColor("RANDOM")
-            .setFooter('${message.author.username}', '${message.author.avatarURL} requested this.');
-            message.author.send("", {embed: pingRich});
+            .setFooter(`${message.author.username}`, `${message.author.avatarURL} requested this.`);
+            await message.author.send(pingRich);
             break;
                 
             case 'help':

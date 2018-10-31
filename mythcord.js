@@ -15,7 +15,7 @@ const crypto = require('crypto');
 
 client.on('ready', () => {
     client.user.setStatus('dnd');
-    client.user.setActivity('I know about "Chunibyo" powers!', {type: 'PLAYING'});
+    client.user.setActivity('Chunibyo Mode', {type: 'PLAYING'});
     console.log("I am bot, is now finally alive after processed!");
 });
 

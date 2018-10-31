@@ -9,10 +9,11 @@ before_script:
   
 script:
   - npm test
-  - node discord/mythcord.js
+  - node mythcord.js
 
 deploy:
   provider: heroku
+  api_key: $HEROKU_API
   app: Mythcord
   on: Discord
   

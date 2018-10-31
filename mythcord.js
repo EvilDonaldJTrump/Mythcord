@@ -64,27 +64,21 @@ client.on('message', async message => {
             break;
         
             case '8ball':
-            if (!arguments[0]) {
-              return message.reply('Sorry but I cannot answer with your blank only. :/');
-            }
+            if (!arguments[0]) return message.reply('Sorry but I cannot answer with your blank only. :/');
             var random = Math.floor(Math.random() * config.eightBall.length);
             message.reply(config.eightBall[random]);
             break;
                   
             case 'gayrate':
-            if (!member) {
-              return message.reply('Hey, no mentioned user detected. This cannot work.');
-            }
+            if (!member) return message.reply('Hey, no mentioned user detected. This cannot work.');
             var gayRate = new Discord.RichEmbed()
-            .addField('[' + message.member.username + ']', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay! :gay_pride_flag:')
-            .setFooter(`To ${message.member.username}`, `${message.member.avatarURL}`);
+            .addField('[' + message.member.user.tag + ']', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay! :gay_pride_flag:')
+            .setFooter(`Requested by ${message.user.username}`, `${message.user.avatarURL}`);
             sendEmbed(message.channel, gayRate);
             break;
                   
             case 'ping':
-            if (member) {
-              return message.reply('No need to mention user in argument. But wait, you made the user getting angry! Shame on you!');
-            }
+            if (member) return message.reply('No need to mention user in argument. But wait, you made the user getting angry! Shame on you!');
             if (message.content.indexOf(process.env.MYTHCORD_PREFIX) !== 0) return;
             var pingUser = arguments.slice[22];
             var apiPing = new Date();

@@ -1,0 +1,19 @@
+sudo: false
+language: node_js
+
+node_js:
+  - 'lts/*'
+
+before_script:
+  - npm install discord.js
+  
+script:
+  - npm test
+
+deploy:
+  provider: heroku
+  app: Mythcord
+  on: Discord
+  
+notifications:
+  email: false

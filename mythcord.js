@@ -73,17 +73,17 @@ client.on('message', async message => {
                   
             case 'gayrate':
             if (!member) {
-              return message.reply('Hey, you have no mention user and saw a text or blank. This cannot work.');
+              return message.reply('Hey, no mentioned user detected. This cannot work.');
             }
             var gayRate = new Discord.RichEmbed()
-            var percentage = Math.floor(Math.random() * 100)
+            let percentage = Math.floor(Math.random() * 100)
             .addField('^ ^ ^', '__' + percentage + '__/**100** Gay! :gay_pride_flag:')
             .setFooter(`To ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, gayRate);
             break;
                   
             case 'ping':
-            if (!member) {
+            if (member) {
               return message.reply('No need to mention user in argument. But wait, you made the user getting angry! Shame on you!');
             }
             if (message.content.indexOf(process.env.MYTHCORD_PREFIX) !== 0) return;

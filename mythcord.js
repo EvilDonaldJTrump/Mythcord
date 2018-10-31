@@ -133,7 +133,7 @@ client.on('message', message => {
       }
    }
 });
-client.login(process.env.MYTHCORD_TOKEN);
+client.login(process.env.TOKEN);
 
 function sendEmbed(channel, embed) {
   channel.send ({

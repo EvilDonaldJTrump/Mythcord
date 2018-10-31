@@ -79,9 +79,8 @@ client.on('message', message => {
             }
             if (member) {
               var gayRate = new Discord.RichEmbed()
-              var person = message.mentions.users.first() || message.author;
               var percentage = Math.floor(Math.random() * 100)
-              .setAuthor('${person.username}')
+              .setAuthor('${message.author.username}')
               .addField('^ ^ ^', '__${percentage}__/**100** Gay! :gay_pride_flag:')
               .setFooter('${message.author.username}', '${message.author.avatarURL} requested this.');
               return;
@@ -103,7 +102,7 @@ client.on('message', message => {
             .setDescription('Current Connection Status')
             .addField('API - ', '**' + ping1 + '**ms')
             .addField('Mythcord - ', '**' + ping2 + '**ms')
-            .addField('${user.username} - ', '**' + ping3 - message.createdTimestamp + '**ms')
+            .addField('${message.author.username} - ', '**' + ping3 - message.createdTimestamp + '**ms')
             .setTimestamp(new Date())
             .setColor("RANDOM")
             .setFooter('${message.author.username}', '${message.author.avatarURL} requested this.');

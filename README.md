@@ -1,4 +1,7 @@
 # Mythcord
+A regular Discord Bot with less fun and moderations with<br>
+owned with a work by Implasher Team, originally authored - Zadezter!
+
 -----
 | Travis |
 | :---: |

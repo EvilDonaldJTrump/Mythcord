@@ -38,7 +38,7 @@
     "mysql": "^2.16.0",
     "mysql2": "^1.6.1",
     "node-fetch": "^2.2.0",
-    "node-opus": "^0.2.7",
+    "node-opus": "^0.3.1",
     "node-superfetch": "^0.1.9",
     "opusscript": "0.0.6",
     "quick.db": "^7.0.0-b15",

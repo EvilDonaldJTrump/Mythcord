@@ -2,7 +2,8 @@
 * This is a file required "mythcord.js"
 * to making interval activity running.
 **/
-const activities = [
+{
+  "activities": [
     "Chunibyo Mode", 
     "Mjölnir Hammer",
     "with '/help' command prefix", 
@@ -19,3 +20,4 @@ const activities = [
     "JS Coding",
     "with no ping @ everyone"
     ];
+}

@@ -1,5 +1,5 @@
 {
-  mode: [
+  "mode": [
    "available",
    "idle",
    "dnd",

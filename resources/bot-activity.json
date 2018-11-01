@@ -19,7 +19,6 @@
   ],
   "type": [
     "PLAYING",
-    "WATCHING",
-    "STREAMING"
+    "WATCHING"
   ]
 }

@@ -15,6 +15,8 @@ var request = require('request');
 const util = require('util');
 const crypto = require('crypto');
 
+const rich = require('discord-rich-presence')(process.env.SECRET);
+
 client.on('ready', () => {
     setInterval(() => {
         const onStatusInterval = Math.floor(Math.random() * (status.mode.length - 1) + 1);
@@ -23,14 +25,20 @@ client.on('ready', () => {
     setInterval(() => {
         const onInterval = Math.floor(Math.random() * (activity.activities.length - 1) + 1);
         client.user.setActivity(activity.activities[onInterval], {type: 'PLAYING'});
-        client.user.setPresence({
-        game: {
-            name: activity.activities[onInterval],
-            type: 'PLAYING',
-        }
-      });
     }, 11000);
     console.log("A bot has now fully working and online!");
+});
+
+client.updatePresence({
+  state: 'Coding',
+  details: 'Implasus - Server Software PHP',
+  startTimestamp: '1507665886',
+  endTimestamp: '1507665886',
+  smallImageKey: '',
+  smallImageText: '',
+  instance: true,
+  partySize: 1,
+  partyMax: 1,
 });
 
 client.on('message', async message => {

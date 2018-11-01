@@ -10,7 +10,7 @@
   "dependencies": {
     "apiai": "^4.0.3",
     "discord.js": "^11.3.2",
-    "discord-rich-presence": "0.0.7",
+    "discord-rpc": "^3.0.0-beta.4",
     "erlpack": "^0.1.0",
     "forever": "^0.15.3",
     "imgur": "^0.3.1",

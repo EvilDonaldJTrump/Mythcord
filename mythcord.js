@@ -15,7 +15,12 @@ var request = require('request');
 const util = require('util');
 const crypto = require('crypto');
 
-const rich = require('discord-rich-presence')(process.env.SECRET);
+const DiscordRPC = require('discord-rpc');
+const rich = new DiscordRPC.Client({transport: 'ipc'});
+
+var date1 = new Date ();
+var date2 = new Date(date1);
+date2.setSeconds(date1.getSeconds() + 3600);
 
 client.on('ready', () => {
     setInterval(() => {
@@ -27,18 +32,6 @@ client.on('ready', () => {
         client.user.setActivity(activity.activities[onInterval], {type: 'PLAYING'});
     }, 11000);
     console.log("A bot has now fully working and online!");
-});
-
-rich.updatePresence({
-  state: 'Coding',
-  details: 'Implasus - Server Software PHP',
-  startTimestamp: '1507665886',
-  endTimestamp: '1507665886',
-  smallImageKey: '',
-  smallImageText: '',
-  instance: true,
-  partySize: 1,
-  partyMax: 1,
 });
 
 client.on('message', async message => {
@@ -153,3 +146,47 @@ function sendEmbed(channel, embed) {
     embed: embed
   });
 }
+
+rich.on('ready', () => {
+        console.clear();
+        console.log("Setting Rich Presence...");
+
+        rich.setActivity({
+                 details: 'Implasus - Server Software PHP',
+                 state: 'Coding',
+                 largeImageKey: 'background',
+                 largeImageText: 'Rich Presence',
+                 smallImageKey: 'zadezterprofile',
+                 smallImageText: 'Zadezter',
+                 instance: false,
+                 partySize: 0,
+                 partyMax: 50,
+                 startTimestamp: date1,
+                 endTimestamp: date2
+             }).then(console.clear(), date1,
+                  endTimestamp: date2
+             }).then(console.clear(), console.log(`Rich Presence has completely set!`)).catch(err => { });
+
+        if (true) {
+                setInterval(() => {
+                var partysize = Math.floor(Math.random() * (50 - 0 + 1)) + 0;
+                var time1 = new Date();
+                var time2 = new Date(time2);
+                time2.setSeconds(time1.getSeconds() + 3600);
+            
+                rich.setActivity({
+                         details: 'Implasus - Server Software PHP',
+                         state: 'Coding',
+                         largeImageKey: 'background',
+                         largeImageText: 'Rich Presence',
+                         smallImageKey: 'zadezterprofile',
+                         smallImageText: 'Zadezter',
+                         instance: false,
+                         partySize: partysize,
+                         partyMax: 50,
+                         startTimestamp: date1,
+                         endTimestamp: date2
+                }).then(console.clear(), console.log(`Updated Rich Presence ${++0} time(s)!`)).catch(err => {});
+          }, (3600 * 1000));
+     }
+});

@@ -163,7 +163,7 @@ rich.on('ready', () => {
                  partyMax: 50,
                  startTimestamp: date1,
                  endTimestamp: date2
-        }).then(console.clear(), console.log(`Rich Presence has completely set!`));
+        }).then(console.clear(), console.log('Rich Presence has completely set!'));
 
         if (true) {
                 setInterval(() => {
@@ -184,7 +184,7 @@ rich.on('ready', () => {
                          partyMax: 50,
                          startTimestamp: date1,
                          endTimestamp: date2
-                }).then(console.clear(), console.log(`Updated Rich Presence ${++0} time(s)!`));
+                }).then(console.clear(), console.log('Updated Rich Presence!'));
           }, (3600 * 1000));
        }
 });

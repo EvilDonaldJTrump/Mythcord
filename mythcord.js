@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./resources/config-bot.json');
 const library = require('./src/lib/library.js');
-const activities = require('./resources/bot-activity.json');
+const activity = require('./resources/bot-activity.json');
 
 var string = require('string');
 const removeMd = require('remove-markdown');
@@ -17,8 +17,8 @@ const crypto = require('crypto');
 client.on('ready', () => {
     client.user.setStatus('dnd');
     setInterval(() => {
-        const onInterval = Math.floor(Math.random() * (activities.activities.length - 1) + 1);
-        client.user.setActivity(activities.activities[onInterval], {type: 'PLAYING'});
+        const onInterval = Math.floor(Math.random() * (activity.activities.length - 1) + 1);
+        client.user.setActivity(activity.activities[onInterval], {type: 'PLAYING'});
     }, 10000);
     console.log("A bot has now fully working and online!");
 });

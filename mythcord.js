@@ -26,7 +26,7 @@ client.on('ready', () => {
     setInterval(() => {
         const onStatusInterval = Math.floor(Math.random() * (status.mode.length - 1) + 1);
         client.user.setStatus(status.mode[onStatusInterval]);
-    }, 1800);
+    }, 1200);
     setInterval(() => {
         const onInterval = Math.floor(Math.random() * (activity.activities.length - 1) + 1);
         client.user.setActivity(activity.activities[onInterval], {type: 'PLAYING'});
@@ -148,22 +148,21 @@ function sendEmbed(channel, embed) {
 }
 
 rich.on('ready', () => {
-        console.clear();
         console.log("Setting Rich Presence...");
 
         rich.setActivity({
                  details: 'Implasus - Server Software PHP',
                  state: 'Coding',
                  largeImageKey: 'zadezterprofile',
-                 largeImageText: 'Rage Mode',
+                 largeImageText: 'Zadezter',
                  smallImageKey: 'zadezterprofile',
                  smallImageText: 'Zadezter',
-                 instance: false,
+                 instance: true,
                  partySize: 0,
                  partyMax: 50,
                  startTimestamp: date1,
                  endTimestamp: date2
-        }).then(console.clear(), console.log('Rich Presence has completely set!'));
+        }).then(console.log('Rich Presence has completely set!'));
 
         if (true) {
                 setInterval(() => {
@@ -176,15 +175,15 @@ rich.on('ready', () => {
                          details: 'Implasus - Server Software PHP',
                          state: 'Coding',
                          largeImageKey: 'zadezterprofile',
-                         largeImageText: 'Rage Mode',
+                         largeImageText: 'Zadezter',
                          smallImageKey: 'zadezterprofile',
                          smallImageText: 'Zadezter',
-                         instance: false,
+                         instance: true,
                          partySize: partysize,
                          partyMax: 50,
                          startTimestamp: date1,
                          endTimestamp: date2
-                }).then(console.clear(), console.log('Updated Rich Presence!'));
+                }).then(console.log('Updated Rich Presence!'));
           }, (3600 * 1000));
        }
 });

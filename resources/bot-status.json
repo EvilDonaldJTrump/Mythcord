@@ -2,8 +2,7 @@
   "mode": [
    "available",
    "idle",
-   "dnd",
-   "invisible"
+   "dnd"
  ]
 }
  

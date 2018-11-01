@@ -26,11 +26,11 @@ client.on('ready', () => {
     setInterval(() => {
         const onStatusInterval = Math.floor(Math.random() * (status.mode.length - 1) + 1);
         client.user.setStatus(status.mode[onStatusInterval]);
-    }, 2300);
+    }, 1800);
     setInterval(() => {
         const onInterval = Math.floor(Math.random() * (activity.activities.length - 1) + 1);
         client.user.setActivity(activity.activities[onInterval], {type: 'PLAYING'});
-    }, 11000);
+    }, 9100);
     console.log("A bot has now fully working and online!");
 });
 

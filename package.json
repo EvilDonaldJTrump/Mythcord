@@ -18,7 +18,7 @@
     "string": "^3.3.3",
     "uws": "^99.0.0",
     "xml2js": "^0.4.19",
-    "@discordjs/uws": "^10.149.0",
+    "@discordjs/uws": "^11.149.1",
     "better-sqlite-pool": "^0.1.2",
     "better-sqlite3": "^5.0.1",
     "bufferutil": "^3.0.3",

@@ -163,11 +163,9 @@ rich.on('ready', () => {
                  partyMax: 50,
                  startTimestamp: date1,
                  endTimestamp: date2
-             }).then(console.clear(), date1,
-                  endTimestamp: date2
              }).then(console.clear(), console.log(`Rich Presence has completely set!`)).catch(err => { });
 
-        if (true) {
+             if (true) {
                 setInterval(() => {
                 var partysize = Math.floor(Math.random() * (50 - 0 + 1)) + 0;
                 var time1 = new Date();
@@ -190,3 +188,5 @@ rich.on('ready', () => {
           }, (3600 * 1000));
      }
 });
+});
+rich.login(process.env.SECRET);

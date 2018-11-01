@@ -3,7 +3,7 @@ const Discord = require('discord.js');
 const client = new Discord.Client();
 const config = require('./resources/config-bot.json');
 const library = require('./src/lib/library.js');
-const activities = require('./resources/bot-activity.js');
+const activities = require('./resources/bot-activity.json');
 
 var string = require('string');
 const removeMd = require('remove-markdown');

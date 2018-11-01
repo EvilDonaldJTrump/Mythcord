@@ -23,7 +23,7 @@ client.on('ready', () => {
     setInterval(() => {
         const onInterval = Math.floor(Math.random() * (activity.activities.length - 1, activity.type.length - 1) + 1);
         client.user.setActivity(activity.activities[onInterval], {type: activity.type[onInterval]});
-    }, 10000);
+    }, 9000);
     console.log("A bot has now fully working and online!");
 });
 

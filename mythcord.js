@@ -1,8 +1,9 @@
 const Discord = require('discord.js');
 
 const client = new Discord.Client();
-const config = require('./config-bot.json');
-const library = require('./library.js');
+const config = require('./resources/config-bot.json');
+const library = require('./src/lib/library.js');
+const activities = require('./resources/bot-activity.js');
 
 var string = require('string');
 const removeMd = require('remove-markdown');
@@ -15,8 +16,11 @@ const crypto = require('crypto');
 
 client.on('ready', () => {
     client.user.setStatus('dnd');
-    client.user.setActivity('Chunibyo Mode', {type: 'PLAYING'});
-    console.log("I am bot, is now finally alive after processed!");
+    setInterval(() => {
+        const onInterval = Math.floor(Math.random() * (activities.length - 1) + 1);
+        client.user.setActivity(`activities[onInterval]`, {type: 'PLAYING'});
+    }, 10000);
+    console.log("A bot has now fully working and online!");
 });
 
 client.on('message', async message => {
@@ -25,7 +29,7 @@ client.on('message', async message => {
 
         var command = message.content.split(" ")[0];
         command = string(command).chompLeft(process.env.MYTHCORD_PREFIX).s.toLowerCase();
-        console.log('A command ' + command + ' has been received from ' + message.author.username + ' in Discord app.');        
+        console.log('A command ' + command + ' has been received from ' + message.author.username + ' in Discord Server.');        
         if (string(message.content).startsWith(process.env.MYTHCORD_PREFIX)) {
           if (message.guild.id == process.env.MYTHCORD_GUILD) return;
          

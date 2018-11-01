@@ -17,8 +17,8 @@ const crypto = require('crypto');
 client.on('ready', () => {
     client.user.setStatus('dnd');
     setInterval(() => {
-        const onInterval = Math.floor(Math.random() * (activities.length - 1) + 1);
-        client.user.setActivity(activities[onInterval], {type: 'PLAYING'});
+        const onInterval = Math.floor(Math.random() * (activities.activities.length - 1) + 1);
+        client.user.setActivity(activities.activities[onInterval], {type: 'PLAYING'});
     }, 10000);
     console.log("A bot has now fully working and online!");
 });

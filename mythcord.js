@@ -154,8 +154,8 @@ rich.on('ready', () => {
         rich.setActivity({
                  details: 'Implasus - Server Software PHP',
                  state: 'Coding',
-                 largeImageKey: 'background',
-                 largeImageText: 'Rich Presence',
+                 largeImageKey: 'zadezterprofile',
+                 largeImageText: 'Rage Mode',
                  smallImageKey: 'zadezterprofile',
                  smallImageText: 'Zadezter',
                  instance: false,
@@ -175,8 +175,8 @@ rich.on('ready', () => {
                 rich.setActivity({
                          details: 'Implasus - Server Software PHP',
                          state: 'Coding',
-                         largeImageKey: 'background',
-                         largeImageText: 'Rich Presence',
+                         largeImageKey: 'zadezterprofile',
+                         largeImageText: 'Rage Mode',
                          smallImageKey: 'zadezterprofile',
                          smallImageText: 'Zadezter',
                          instance: false,

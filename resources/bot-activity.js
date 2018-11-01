@@ -9,7 +9,7 @@ const activities = [
     "Mobile Legends: Bang Bang",
     "Minecraft",
     "with my creator, Zadezter",
-    "One Punch Man"
+    "One Punch Man",
     "Fortnite",
     "with Implasus Server Software",
     "with Implasher Team",

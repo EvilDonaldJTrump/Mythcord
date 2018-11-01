@@ -29,7 +29,7 @@ client.on('ready', () => {
     console.log("A bot has now fully working and online!");
 });
 
-client.updatePresence({
+rich.updatePresence({
   state: 'Coding',
   details: 'Implasus - Server Software PHP',
   startTimestamp: '1507665886',

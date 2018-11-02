@@ -93,18 +93,9 @@ client.on('message', async message => {
             break;
                   
             case 'restart':
-            if (message.author.id == process.env.MYTHCORD_OWNER) {
-              message.reply('Restarting Mythcord system...').then(function() {
-                console.log('The bot owner is restarting Mythcord system...');
-                process.exit(0);
-              });
-              message.reply('Hello, creator! You are now restarting Mythcord system...');
-            } else {
-              message.reply('Access denied! You are not a creator of this bot to restart Mythcord system...');
-            }
-            client.on('ready', () => {
-                message.reply('Creator, you have successfully restarted Mythcord system...');
-            });
+            if(!arguments[0) return message.reply('Can you please say something without these blank text?!');
+            message.delete();
+            message.channel.send(arguments.join(' '));
             break;
                   
             case 'ping':
@@ -141,8 +132,8 @@ client.on('message', async message => {
               .addField('/8ball', 'Ask the magic 8Ball with your questions/answers!')
               .addField('/status', 'Display the statstics about this bot.')
               .addField('/gayrate <@user>', 'Mention user to show the gay percentage rate!')
-              .addField('/ping', 'Check your connection status with the command')
-              .addField('/restart', 'Restart Mythcord System in bot. [Creator Only]')
+              .addField('/ping', 'Check your connection status with the command.')
+              .addField('/say', 'Say something and the bot will repeat to say.')
               .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});
            break;
@@ -178,7 +169,7 @@ rich.on('ready', () => {
                  partyMax: 50,
                  startTimestamp: date1,
                  endTimestamp: date2
-        }).then(console.log('Rich Presence has completely set!'));
+        }).then(console.log('Rich Presence has completely set!')).catch(err => { });
 
         if (true) {
                 setInterval(() => {
@@ -199,8 +190,8 @@ rich.on('ready', () => {
                          partyMax: 50,
                          startTimestamp: date1,
                          endTimestamp: date2
-                }).then(console.log('Updated Rich Presence!'));
+                }).then(console.log('Updated Rich Presence!')).catch(err => { });
           }, (3600 * 1000));
        }
 });
-rich.login(process.env.SECRET);
+rich.login(process.env.SECRET).catch(console.error);

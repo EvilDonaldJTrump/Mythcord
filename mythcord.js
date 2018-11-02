@@ -26,6 +26,7 @@ client.on('ready', () => {
     setInterval(() => {
         const onStatusInterval = Math.floor(Math.random() * (status.mode.length - 1) + 1);
         client.user.setStatus(status.mode[onStatusInterval]);
+        client.user.PresenceStatus(status.mode[onStatusInterval]);
     }, 1200);
     setInterval(() => {
         const onInterval = Math.floor(Math.random() * (activity.activities.length - 1) + 1);
@@ -92,6 +93,21 @@ client.on('message', async message => {
             sendEmbed(message.channel, gayRate);
             break;
                   
+            case 'restart':
+            if (message.author.id == process.env.MYTHCORD_OWNER) {
+              message.reply('Restarting Mythcord system...').then(function() {
+                console.log('The bot owner is restarting Mythcord system...');
+                process.exit(0);
+              });
+              message.reply('Hello, creator! You are now restarting Mythcord system...');
+            } else {
+              message.reply('Access denied! You are not a creator of this bot to restart Mythcord system...');
+            }
+            client.on('ready', () => {
+                message.reply('Creator, you have successfully restarted Mythcord system...');
+            });
+            break;
+                  
             case 'ping':
             if (member) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
             if (message.content.indexOf(process.env.MYTHCORD_PREFIX) !== 0) return;
@@ -127,6 +143,7 @@ client.on('message', async message => {
               .addField('/status', 'Display the statstics about this bot.')
               .addField('/gayrate <@user>', 'Mention user to show the gay percentage rate!')
               .addField('/ping', 'Check your connection status with the command')
+              .addField('/restart', 'Restart Mythcord System in bot. [Creator Only]')
               .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});
            break;

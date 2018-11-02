@@ -92,7 +92,7 @@ client.on('message', async message => {
             sendEmbed(message.channel, gayRate);
             break;
                   
-            case 'restart':
+            case 'say':
             if(!arguments[0) return message.reply('Can you please say something without these blank text?!');
             message.delete();
             message.channel.send(arguments.join(' '));

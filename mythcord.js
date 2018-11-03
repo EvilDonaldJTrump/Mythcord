@@ -104,6 +104,7 @@ client.on('message', async message => {
             if (!member) return message.reply('Excuse me, please mention the user or bot.');
             var gayRate = new Discord.RichEmbed()
               .addField('' + member.displayName + '', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay :gay_pride_flag:')
+	      .setTimestamp(new Date())
               .setColor('#FFC0CB')
               .setFooter(`Requested by ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, gayRate);
@@ -170,7 +171,8 @@ client.on('message', async message => {
                      .setTitle('Bedrock Query Error')
                      .setDescription('❌ You have entered a invalid IP address/port or the server is currently offline!')
                      .setColor('RANDOM')
-		     .setFooter(`Try again, ${message.author.username}`, `${message.author.avatarURL}`)
+		     .setTimestamp(new Date())
+		     .setFooter(`Try again later, ${message.author.username}`, `${message.author.avatarURL}`)
                   sendEmbed(message.channel, errorStatus);
                   return;
                 }

@@ -122,11 +122,11 @@ client.on('message', async message => {
             break;
                 
             case 'help':
-            message.reply('The command was sent to your Direct Message.')
+            message.reply('The command was sent to your Direct Message. Tap this reaction to delete this message.')
             .then(function (message) {
               message.react('🇲🇾')
               const emojis = (reaction, users) => {
-                return ['🇲🇾'].includes(reaction.emoji.name) && users.id === message.author.id;
+                return ['🇲🇾', '🇲🇾'].includes(reaction.emoji.name) && users.id === message.author.id;
               };
               message.awaitReactions(emojis, {max: 2})
               .then(collected => { 

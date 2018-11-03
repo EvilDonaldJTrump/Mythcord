@@ -191,7 +191,7 @@ client.on('message', async message => {
                       .addField('💽 Software', '```' + resources.body.software + '```')
                       .addField('💻 Game Version', '```' + resources.body.version + '```')
                       .addField('🖇 Protocol', '```' + resources.body.protocol + '```')
-		      .addField('🔒 Whitelist', '```' + resources.body.whitelist + '```')
+		      .addField('🔒 Whitelist', '```' + resources.body.whitelist === '``on```' + '```')
                       .addField('🌎 Map', '```' + resources.body.map + '```')
                       .addField('👥 Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')
                       .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')

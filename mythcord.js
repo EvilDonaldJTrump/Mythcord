@@ -82,20 +82,20 @@ client.on('message', async message => {
             case '8ball':
             if (!arguments[0]) return message.reply('Sorry, you sent a blank text. So I cannot answer. :/');
             var random = Math.floor(Math.random() * config.eightBall.length);
-            message.reply(config.eightBall[random]);
+              message.reply(config.eightBall[random]);
             break;
                   
             case 'gayrate':
             if (!member) return message.reply('Excuse me, please mention the user or bot.');
             var gayRate = new Discord.RichEmbed()
-            .addField('' + member.displayName + '', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay :gay_pride_flag:')
-            .setColor('#FFC0CB')
-            .setFooter(`Requested by ${message.author.username}`, `${message.author.avatarURL}`);
+              .addField('' + member.displayName + '', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay :gay_pride_flag:')
+              .setColor('#FFC0CB')
+              .setFooter(`Requested by ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, gayRate);
             break;
                   
             case 'say':
-            if(!arguments[0]) return message.reply('Can you please say something without these blank text or more spaces?!');
+            if (!arguments[0]) return message.reply('Can you please say something without these blank text or more spaces?!');
             message.delete();
             message.channel.send(arguments.join(' '));
             break;
@@ -103,13 +103,13 @@ client.on('message', async message => {
             case 'about':
             if (!arguments[0] || member) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
             var about = new Discord.RichEmbed()
-            .setTitle('About')
-            .setDescription('Mythcord is a open source Discord bot with less fun and moderations features, written in Node.js')
-            .addField('Creator', '**Zadezter [#0207]**')
-            .addField('Country', '🇲🇾 | __Malaysia__')
-            .addField('More', '[Discord Server](https://discord.gg/4dMTw2H) | [Invite Bot](https://discordapp.com/api/oauth2/authorize?client_id=505699657066741785&permissions=8&scope=bot) | [Mythcord](http://github.com/Implasher/Mythcord) | [Implasus](http://github.com/Implasher/Implasus) | [YouTube](http://youtube.com/Zadezter) | [Twitter](http://twitter.com/Zadezter)')
-            .setColor('#FFFFFF')
-            .setFooter('Mythcord have a rules for you to not forking this bot project in Github.')
+              .setTitle('About')
+              .setDescription('Mythcord is a open source Discord bot with less fun and moderations features, written in Node.js')
+              .addField('Creator', '**Zadezter [#0207]**')
+              .addField('Country', '🇲🇾 | __Malaysia__')
+              .addField('More', '[Discord Server](https://discord.gg/4dMTw2H) | [Invite Bot](https://discordapp.com/api/oauth2/authorize?client_id=505699657066741785&permissions=8&scope=bot) | [Mythcord](http://github.com/Implasher/Mythcord) | [Implasus](http://github.com/Implasher/Implasus) | [YouTube](http://youtube.com/Zadezter) | [Twitter](http://twitter.com/Zadezter)')
+              .setColor('#FFFFFF')
+              .setFooter('Mythcord have a rules for you to not forking this bot project in Github.')
             sendEmbed(message.channel, about);
             break;
                   
@@ -125,14 +125,14 @@ client.on('message', async message => {
             var ping2 = Math.floor(botPing)
             var ping3 = Math.round(message.author.ping)
             var pingRich = new Discord.RichEmbed()
-            .setTitle('Ping')
-            .setDescription('Connection Status')
-            .addField('💻 API', '**' + ping1 + '** ms')
-            .addField('🤖 Mythcord', '**' + ping2 + '** ms')
-            .addField('📡 Network', '**' + ping3 + '** ms')
-            .setTimestamp(new Date())
-            .setColor("RANDOM")
-            .setFooter(`Status: ${message.author.username}`, `${message.author.avatarURL}`);
+              .setTitle('Ping')
+              .setDescription('Connection Status')
+              .addField('💻 API', '**' + ping1 + '** ms')
+              .addField('🤖 Mythcord', '**' + ping2 + '** ms')
+              .addField('📡 Network', '**' + ping3 + '** ms')
+              .setTimestamp(new Date())
+              .setColor("RANDOM")
+              .setFooter(`Status: ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, pingRich);
             break;
                   
@@ -143,9 +143,9 @@ client.on('message', async message => {
             if (resources.status == 200){
               if (resources.body.error != null){
                 var errorStatus = new Discord.RichEmbed()
-                .setTitle('Error')
-                .setDescription('You were entered a invalid IP address/Port or the server is currently offline')
-                .setColor('RANDOM')
+                  .setTitle('Error')
+                  .setDescription('You were entered a invalid IP address/Port or the server is currently offline')
+                  .setColor('RANDOM')
                 sendEmbed(message.channel, errorStatus);
                 return;
               }
@@ -157,15 +157,14 @@ client.on('message', async message => {
 		} else if (typeof resources.body.plugins == "string"){ resources.body.plugins = [resources.body.plugins];
 		} else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
                   var query = new Discord.RichEmbed()
-                  .setTitle(resources.body.motd)
-                  .addField('Software', resources.body.software)
-                  .addField('Version', resources.body.version)
-                  .addField('Protocol', resources.body.protocol)
-                  .addField('Map', resources.body.map)
-                  .addField('Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', resources.body.list.join(', '))
-                  .addField('Plugins', resources.body.plugins.join(', '))
+                    .setTitle(resources.body.motd)
+                    .addField('Software', resources.body.software)
+                    .addField('Version', resources.body.version)
+                    .addField('Protocol', resources.body.protocol)
+                    .addField('Map', resources.body.map)
+                    .addField('Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', resources.body.list.join(', '))
+                    .addField('Plugins', resources.body.plugins.join(', '))
                   sendEmbed(message.channel, query);
-		});
 		} else {
                     message.reply('There is a problem to send a Query API request. Please try again later.')
                     .then(function (message) {

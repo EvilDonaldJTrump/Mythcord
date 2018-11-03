@@ -192,13 +192,14 @@ client.on('message', async message => {
 		      .addField('🕹 Game Type', '```' + resources.body.game.type + '```')
 		      .addField('🎲 Game Name', '```' + resources.body.game.id + '```')
                       .addField('💻 Game Version', '```' + resources.body.version + '```')
+		      .addField('🔒 Whitelist', '' + resources.body.whitelist + '```')
                       .addField('🖇 Protocol', '```' + resources.body.protocol + '```')
                       .addField('🌎 Map', '```' + resources.body.map + '```')
                       .addField('👥 Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')
                       .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
                       .setColor('RANDOM')
 		      .setTimestamp(new Date())
-		      .setFooter(`🔒 Whitelist: ${resources.body.whitelist}`);
+		      .setFooter('Minecraft: Bedrock / Windows 10 Edition');
                     sendEmbed(message.channel, query);
                  } else {
                     message.reply('Bedrock Query Error: There is a problem to send a Query API request. Please try again later.')

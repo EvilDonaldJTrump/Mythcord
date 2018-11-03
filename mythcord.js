@@ -74,7 +74,7 @@ client.on('message', async message => {
               .setDescription('Shows a status and uptime of this bot.')
               .setColor('#15f153')
               .addField('^ ^ ^', statstics)
-              .setFooter(`Host: Heroku Services | Location: Malaysia`);
+              .setFooter(`Host: Heroku | Library: Node.js | Location: Malaysia`);
             sendEmbed(message.channel, status);
             break;
         
@@ -88,14 +88,25 @@ client.on('message', async message => {
             if (!member) return message.reply('Excuse me, please mention the user or bot.');
             var gayRate = new Discord.RichEmbed()
             .addField('' + member.displayName + '', '__' + Math.floor(Math.random() * 101) + '__/**100**% Gay :gay_pride_flag:')
+            .setColor('#FFC0CB')
             .setFooter(`Requested by ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, gayRate);
             break;
                   
             case 'say':
-            if(!arguments[0]) return message.reply('Can you please say something without these blank text?!');
+            if(!arguments[0]) return message.reply('Can you please say something without these blank text or more spaces?!');
             message.delete();
             message.channel.send(arguments.join(' '));
+            break;
+                  
+            case 'about':
+            if (!arguments[0] && member) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
+            var about = new Discord.RichEmbed()
+            .setTitle('About')
+            .setDescription('Mythcord is a open source Discord bot with less fun and moderations features, written in Node.js')
+            .addTitle('More', '[Discord Server](https://discord.gg/4dMTw2H) | [Invite Bot](https://discordapp.com/api/oauth2/authorize?client_id=505163391271436299&permissions=8&scope=bot) | [Github](http://github.com/Implasher/Mythcord) | [Implasus](http://github.com/Implasher/Implasus) | [YouTube](http://youtube.com/Zadezter) | [Twitter](http://twitter.com/Zadezter)')
+            .setColor('DARK')
+            sendEmbed(message.channel, about);
             break;
                   
             case 'ping':
@@ -124,19 +135,7 @@ client.on('message', async message => {
             case 'help':
             message.reply('The command was sent to your Direct Message. Tap this reaction to delete this message.')
             .then(function (message) {
-              message.react('🇲🇾').then(() => message.react('🇲🇾'));
-              const emojis = (reaction, users) => {
-                return ['🇲🇾', '🇲🇾'].includes(reaction.emoji.name) && users.id === message.author.id;
-              };
-              message.awaitReactions(emojis, {max: 1})
-              .then(collected => { 
-                const reaction = collected.first();
-                if (reaction.emoji.name === '🇲🇾') { 
-                  message.delete();
-                } else {
-                  message.delete();
-                }
-              });
+              message.react('🇲🇾').then(() => message.react('⏳'));
             }).catch(function() {});
             var random = Math.floor(Math.random() * config.helpFooter.length);
             var help = new Discord.RichEmbed()

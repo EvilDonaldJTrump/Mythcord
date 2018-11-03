@@ -78,11 +78,19 @@ client.on('message', async message => {
               .setFooter(`Host: Heroku | Library: Node.js | Country: Malaysia`);
             sendEmbed(message.channel, status);
             break;
-        
+            
+            
+            /**
+	    * This 8ball code isn't allowed to copy and paste.
+	    * If we found you did, we'll DCMA takedown your repository.
+	    * You have no permission to ask to creator or use this codes.
+	    *
+	    * Copyright (c) 2018 - 2019
+	    **/
             case '8ball':
-            var ballMsg = message.content.toLowerCase().split(" ");
-            if (!ballMsg[0]) return message.reply('Sorry, you sent a blank text. So I cannot answer. :/');
-            unirest.get(`https://8ball.delegator.com/magic/JSON/${encodeURIComponent(ballMsg.content.replace(ballMsg[0] + " ", ""))}`)
+            var ball = message.content.toLowerCase().split(" ");
+            if (!arguments[0]) return message.reply('Sorry, you sent a blank text. So I cannot answer. :/');
+            unirest.get(`https://8ball.delegator.com/magic/JSON/${encodeURIComponent(ball.content.replace(ball[0] + " ", ""))}`)
             .header("Accept", "application/json").end(resources => {
               if (resources.status == 200) {
                 message.reply(resources.body.magic.answer);

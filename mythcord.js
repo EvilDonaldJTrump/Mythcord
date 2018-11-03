@@ -124,16 +124,17 @@ client.on('message', async message => {
             case 'help':
             message.reply('The command was sent to your Direct Message. Tap this reaction to delete this message.')
             .then(function (message) {
-              message.react('🇲🇾')
+              message.react('🇲🇾').then(() => message.react('🇲🇾'));
               const emojis = (reaction, users) => {
                 return ['🇲🇾', '🇲🇾'].includes(reaction.emoji.name) && users.id === message.author.id;
               };
-              message.awaitReactions(emojis, {max: 1})
+              message.awaitReactions(emojis, {max: 1, time: 1000000000000})
               .then(collected => { 
                 const reaction = collected.first();
                 if (reaction.emoji.name === '🇲🇾') { 
                   message.delete();
-                }
+                } else {
+                  message.delete();
               });
             }).catch(function() {});
             var random = Math.floor(Math.random() * config.helpFooter.length);

@@ -164,10 +164,13 @@ client.on('message', async message => {
                   .addField('Map', resources.body.map)
                   .addField('Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', resources.body.list.join(', '))
                   .addField('Plugins', resources.body.plugins.join(', '))
-                  sendEmbed(message.channel, query)
+                  sendEmbed(message.channel, query);
 		});
 		} else {
                     message.reply('There is a problem to send a Query API request. Please try again later.')
+                    .then(function (message) {
+                      message.react('❌')
+                    }).catch(function() {});
 		}
             });
             break;

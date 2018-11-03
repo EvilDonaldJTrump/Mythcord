@@ -137,16 +137,16 @@ client.on('message', async message => {
             break;
                   
             case 'bedrock':
-            if (arguments[1] == null) return message.reply('The command usage is: /bedrock <ip> [port]')
-            if (arguments[2] == null) arguments[2] = 19132;
-            unirest.get('https://use.gameapis.net/mcpe/query/extensive/' + arguments[1] + ':' + arguments[2]).header("Accept", "application/json").end(resources => {
+            var bedrockMsg = message.content.toLowerCase().split(" ");
+            if (bedrockMsg[1] == null) return message.reply('Command usage: /bedrock <ip> [port]')
+            if (bedrockMsg[2] == null) bedrockMsg[2] = 19132;
+            unirest.get('https://use.gameapis.net/mcpe/query/extensive/' + bedrockMsg[1] + ':' + bedrockMsg[2]).header("Accept", "application/json").end(resources => {
             if (resources.status == 200){
               if (resources.body.error != null){
-                var errorStatus = new Discord.RichEmbed()
-                  .setTitle('Error')
-                  .setDescription('You were entered a invalid IP address/Port or the server is currently offline')
-                  .setColor('RANDOM')
-                sendEmbed(message.channel, errorStatus);
+		message.reply('You were entered a invalid IP address/Port or the server is currently offline')
+		.then(function (message) {
+                  message.react('❌')
+                }).catch(function() {});
                 return;
               }
               if (resources.body.list == null){ 
@@ -154,8 +154,8 @@ client.on('message', async message => {
               } else if (resources.body.list.join(', ').length > 1024) resources.body.list = ['Too limit!'];
                 if (resources.body.plugins == null){ 
                   resources.body.plugins = ['None'];
-		} else if (typeof resources.body.plugins == "string"){ resources.body.plugins = [resources.body.plugins];
-		} else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
+              } else if (typeof resources.body.plugins == "string"){ resources.body.plugins = [resources.body.plugins];
+              } else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
                   var query = new Discord.RichEmbed()
                     .setTitle(resources.body.motd)
                     .addField('Software', resources.body.software)

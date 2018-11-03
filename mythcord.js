@@ -143,11 +143,12 @@ client.on('message', async message => {
             unirest.get('https://use.gameapis.net/mcpe/query/extensive/' + bedrockMsg[1] + ':' + bedrockMsg[2]).header("Accept", "application/json").end(resources => {
             if (resources.status == 200){
               if (resources.body.error != null){
-		message.reply('You were entered a invalid IP address/Port or the server is currently offline')
-		.then(function (message) {
-                  message.react('❌')
-                }).catch(function() {});
-                return;
+		var errorStatus = new Discord.RichEmbed()
+                   .setTitle('Error')
+                   .setDescription('You were entered a invalid IP address/Port or the server is currently offline')
+                   .setColor('RANDOM')
+                 sendEmbed(message.channel, errorStatus);
+                 return;
               }
               if (resources.body.list == null){ 
 		resources.body.list = ['None'];
@@ -158,18 +159,18 @@ client.on('message', async message => {
               } else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
                   var query = new Discord.RichEmbed()
                     .setTitle(resources.body.motd)
-                    .addField('Software', resources.body.software)
-                    .addField('Version', resources.body.version)
-                    .addField('Protocol', resources.body.protocol)
-                    .addField('Map', resources.body.map)
-                    .addField('Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', resources.body.list.join(', '))
-                    .addField('Plugins', resources.body.plugins.join(', '))
+                    .addField('Software', '```' + resources.body.software + '```')
+                    .addField('Game Version', '```' + resources.body.version + '```')
+                    .addField('Protocol', '```' + resources.body.protocol + '```')
+                    .addField('Map', '```' + resources.body.map + '```')
+                    .addField('Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')
+                    .addField('Plugins', '```' + resources.body.plugins.join(', ') + '```')
                   sendEmbed(message.channel, query);
 		} else {
-                    message.reply('There is a problem to send a Query API request. Please try again later.')
-                    .then(function (message) {
-                      message.react('❌')
-                    }).catch(function() {});
+                   message.reply('There is a problem to send a Query API request. Please try again later.')
+                   .then(function (message) {
+                     message.react('❌')
+                   }).catch(function() {});
 		}
             });
             break;

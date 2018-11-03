@@ -131,7 +131,7 @@ client.on('message', async message => {
               message.awaitReactions(emojis, {max: 1})
               .then(collected => { 
                 const reaction = collected.first();
-                if (reaction.emoji.name === '🇲🇾') { 
+                if (reaction.emoji.name === '🇲🇾', 2) { 
                   message.delete();
                 }
               });

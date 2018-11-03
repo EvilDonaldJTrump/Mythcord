@@ -122,7 +122,7 @@ client.on('message', async message => {
             break;
                 
             case 'help':
-            message.reply('The command was sent to your Direct Message. Go see it.');
+            message.reply('The command was sent to your Direct Message. Go see it.')
             .then(function (message) {
               message.react('⏭')
               message.react('🌀')

@@ -125,6 +125,8 @@ client.on('message', async message => {
             message.reply('The command was sent to your Direct Message.')
             .then(function (message) {
               message.react('🇲🇾')
+            if (message.react('🇲🇾') == 0) {
+              message.delete();
             }).catch(function() {});
             var random = Math.floor(Math.random() * config.helpFooter.length);
             var help = new Discord.RichEmbed()

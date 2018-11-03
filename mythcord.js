@@ -147,12 +147,11 @@ client.on('message', async message => {
             var bedrockMsg = message.content.toLowerCase().split(" ");
             if (bedrockMsg[1] == null) return message.reply('Command usage: /bedrock <ip> [port]')
             if (bedrockMsg[2] == null) bedrockMsg[2] = 19132;
-            if (!bedrockMsg[1] + ':') return message.reply('Please do not put `:` symbol in near IP address before the port number.')
             unirest.get('https://use.gameapis.net/mcpe/query/extensive/' + bedrockMsg[1] + ':' + bedrockMsg[2]).header("Accept", "application/json").end(resources => {
             if (resources.status == 200){
               if (resources.body.error != null){
 		var errorStatus = new Discord.RichEmbed()
-                   .setTitle('Error')
+                   .setTitle('Bedrock Query Error')
                    .setDescription('❌ You have entered a invalid IP address/port or the server is currently offline!')
                    .setColor('RANDOM')
                  sendEmbed(message.channel, errorStatus);
@@ -179,7 +178,7 @@ client.on('message', async message => {
 		    .setFooter('Minecraft: Bedrock Edition | Minecraft: Windows 10 Edition')
                   sendEmbed(message.channel, query);
 		} else {
-                   message.reply('There is a problem to send a Query API request. Please try again later.')
+                   message.reply('Bedrock Query Error: There is a problem to send a Query API request. Please try again later.')
                    .then(function (message) {
                      message.react('❌')
                    }).catch(function() {});

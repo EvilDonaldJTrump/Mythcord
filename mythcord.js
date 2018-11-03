@@ -211,7 +211,6 @@ client.on('message', async message => {
               .addField('/say', 'Say something and the bot will repeat to say.')
               .addField('/about', 'Check out a less about and more informations.')
               .addField('/bedrock <ip> [port]', 'Check your server in query for Minecraft: Bedrock / Windows 10 Edition')
-	      .addField('
               .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});
            break;

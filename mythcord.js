@@ -135,7 +135,7 @@ client.on('message', async message => {
             break;
                 
             case 'help':
-            message.reply('The command was sent to your Direct Message. Tap this reaction to delete this message.')
+            message.reply('The command was sent to your Direct Message.')
             .then(function (message) {
               message.react('🇲🇾').then(() => message.react('⏳')).then(() => message.react('🇸🇬'));
             }).catch(function() {});

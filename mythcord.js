@@ -101,7 +101,7 @@ client.on('message', async message => {
             break;
                   
             case 'about':
-            if (arguments[1] || member) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
+            if (member) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
             var about = new Discord.RichEmbed()
               .setTitle('About')
               .setDescription('Mythcord is a open source Discord bot with less fun and moderations features, written in Node.js')
@@ -147,7 +147,7 @@ client.on('message', async message => {
             var bedrockMsg = message.content.toLowerCase().split(" ");
             if (bedrockMsg[1] == null) return message.reply('Command usage: /bedrock <ip> [port]')
             if (bedrockMsg[2] == null) bedrockMsg[2] = 19132;
-            if (bedrockMsg[1] + ':') return message.reply('Please do not put `:` symbol in near IP address before the port number.')
+            if (!bedrockMsg[1] + ':') return message.reply('Please do not put `:` symbol in near IP address before the port number.')
             unirest.get('https://use.gameapis.net/mcpe/query/extensive/' + bedrockMsg[1] + ':' + bedrockMsg[2]).header("Accept", "application/json").end(resources => {
             if (resources.status == 200){
               if (resources.body.error != null){

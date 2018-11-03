@@ -75,6 +75,7 @@ client.on('message', async message => {
               .setDescription('Shows a status and uptime of this bot.')
               .setColor('#15f153')
               .addField('^ ^ ^', statstics)
+	      .setTimestamp(new Date())
               .setFooter(`Host: Heroku | Library: Node.js | Country: Malaysia`);
             sendEmbed(message.channel, status);
             break;
@@ -185,7 +186,7 @@ client.on('message', async message => {
                 } else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
                     var query = new Discord.RichEmbed()
 		      .setTitle('Bedrock Query')
-		      .setDescription('IP: ' + bedrockMsg[1] + ' | Port: ' + bedrockMsg[2])
+		      .setDescription('**IP**: ' + bedrockMsg[1] + ' | **Port**: ' + bedrockMsg[2])
                       .addField('🖋 MOTD', '```' + resources.body.motd + '```')
                       .addField('💽 Software', '```' + resources.body.software + '```')
                       .addField('💻 Game Version', '```' + resources.body.version + '```')
@@ -194,7 +195,8 @@ client.on('message', async message => {
                       .addField('👥 Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')
                       .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
                       .setColor('RANDOM')
-		      .setFooter('Minecraft: Bedrock / Windows 10 Edition')
+		      .setTimestamp(new Date())
+		      .setFooter('🔒 Whitelist:' + resources.body.whitelist + ' | 🎮 Game Name: ' + resources.body.gameId + ' | 🕹 Game Type: ' + resources.body.gametype);
                     sendEmbed(message.channel, query);
                  } else {
                     message.reply('Bedrock Query Error: There is a problem to send a Query API request. Please try again later.')

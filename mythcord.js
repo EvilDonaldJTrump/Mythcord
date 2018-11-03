@@ -135,7 +135,14 @@ client.on('message', async message => {
               .setFooter(`Status: ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, pingRich);
             break;
-                  
+            
+            /**
+	    * This query code isn't allowed to copy and paste.
+	    * If we found you did, we'll DCMA takedown your repository.
+	    * You have no permission to ask to creator or use this codes.
+	    *
+	    * Copyright (c) 2018 - 2019
+	    **/
             case 'bedrock':
             var bedrockMsg = message.content.toLowerCase().split(" ");
             if (bedrockMsg[1] == null) return message.reply('Command usage: /bedrock <ip> [port]')
@@ -145,7 +152,7 @@ client.on('message', async message => {
               if (resources.body.error != null){
 		var errorStatus = new Discord.RichEmbed()
                    .setTitle('Error')
-                   .setDescription('You were entered a invalid IP address/Port or the server is currently offline')
+                   .setDescription('❌ You have entered a invalid IP address/port or the server is currently offline!')
                    .setColor('RANDOM')
                  sendEmbed(message.channel, errorStatus);
                  return;
@@ -160,13 +167,15 @@ client.on('message', async message => {
                   var query = new Discord.RichEmbed()
 		    .setTitle('Bedrock Query')
 		    .setDescription('IP: ' + bedrockMsg[1] + ' | Port: ' + bedrockMsg[2])
-                    .addField('MOTD', '```' + resources.body.motd + '```')
-                    .addField('Software', '```' + resources.body.software + '```')
-                    .addField('Game Version', '```' + resources.body.version + '```')
-                    .addField('Protocol', '```' + resources.body.protocol + '```')
-                    .addField('Map', '```' + resources.body.map + '```')
-                    .addField('Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')
-                    .addField('Plugins', '```' + resources.body.plugins.join(', ') + '```')
+                    .addField('🖋 MOTD', '```' + resources.body.motd + '```')
+                    .addField('💽 Software', '```' + resources.body.software + '```')
+                    .addField('💻 Game Version', '```' + resources.body.version + '```')
+                    .addField('🖇 Protocol', '```' + resources.body.protocol + '```')
+                    .addField('🌎 Map', '```' + resources.body.map + '```')
+                    .addField('👥 Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')
+                    .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
+		    .setColor('RANDOM')
+		    .setFooter('Minecraft: Bedrock Edition | Windows 10 Edition')
                   sendEmbed(message.channel, query);
 		} else {
                    message.reply('There is a problem to send a Query API request. Please try again later.')
@@ -194,7 +203,7 @@ client.on('message', async message => {
               .addField('/ping', 'Check your connection status with the command.')
               .addField('/say', 'Say something and the bot will repeat to say.')
               .addField('/about', 'Check out a less about and more informations.')
-              .addField('/bedrock <ip> <port>', 'Check your query server based in Minecraft: Bedrock / Windows 10')
+              .addField('/bedrock <ip> <port>', 'Check your query server based in Minecraft: Bedrock / Windows 10 Edition')
               .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});
            break;

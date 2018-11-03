@@ -158,7 +158,9 @@ client.on('message', async message => {
               } else if (typeof resources.body.plugins == "string"){ resources.body.plugins = [resources.body.plugins];
               } else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
                   var query = new Discord.RichEmbed()
-                    .setTitle(resources.body.motd)
+		    .setTitle('Bedrock Query')
+		    .setDescription('IP: ' + bedrockMsg[1] + ' | Port: ' + bedrockMsg[2])
+                    .addField('MOTD', '```' + resources.body.motd + '```')
                     .addField('Software', '```' + resources.body.software + '```')
                     .addField('Game Version', '```' + resources.body.version + '```')
                     .addField('Protocol', '```' + resources.body.protocol + '```')

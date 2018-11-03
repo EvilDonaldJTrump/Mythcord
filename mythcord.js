@@ -170,7 +170,7 @@ client.on('message', async message => {
                      .setTitle('Bedrock Query Error')
                      .setDescription('❌ You have entered a invalid IP address/port or the server is currently offline!')
                      .setColor('RANDOM')
-		     .setFooter(`${message.author.avatarURL}`)
+		     .setFooter(`Try again, ${message.author.username}`, `${message.author.avatarURL}`)
                   sendEmbed(message.channel, errorStatus);
                   return;
                 }

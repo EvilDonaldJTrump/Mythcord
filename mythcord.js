@@ -122,9 +122,9 @@ client.on('message', async message => {
             break;
                 
             case 'help':
-            message.reply('The command was sent to your Direct Message. Go see it.')
+            message.reply('The command was sent to your Direct Message.')
             .then(function (message) {
-              message.react('▶', '🇲🇾', '◀')
+              message.react('🇲🇾')
             }).catch(function() {});
             var random = Math.floor(Math.random() * config.helpFooter.length);
             var help = new Discord.RichEmbed()
@@ -161,7 +161,7 @@ rich.on('ready', () => {
         console.log("Setting Rich Presence...");
 
         rich.setActivity({
-                 details: 'Implasus - Server Software PHP',
+                 details: 'Implasus Server Software PHP',
                  state: 'Coding',
                  largeImageKey: 'zadezterprofile',
                  largeImageText: 'Zadezter',
@@ -182,7 +182,7 @@ rich.on('ready', () => {
                 time2.setSeconds(time1.getSeconds() + 3600);
             
                 rich.setActivity({
-                         details: 'Implasus - Server Software PHP',
+                         details: 'Implasus Server Software PHP',
                          state: 'Coding',
                          largeImageKey: 'zadezterprofile',
                          largeImageText: 'Zadezter',

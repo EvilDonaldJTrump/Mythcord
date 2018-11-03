@@ -31,7 +31,7 @@ client.on('ready', () => {
         const onInterval = Math.floor(Math.random() * (activity.activities.length - 1) + 1);
         client.user.setActivity(activity.activities[onInterval], {type: 'PLAYING'});
     }, 9000);
-    console.log("A bot has now fully working and online!");
+    console.log("Mythcord had finally connected via services.");
 });
 
 client.on('message', async message => {
@@ -74,7 +74,7 @@ client.on('message', async message => {
               .setDescription('Shows a status and uptime of this bot.')
               .setColor('#15f153')
               .addField('^ ^ ^', statstics)
-              .setFooter(`Host: Heroku | Library: Node.js | Location: Malaysia`);
+              .setFooter(`Host: Heroku | Library: Node.js | Country: Malaysia`);
             sendEmbed(message.channel, status);
             break;
         
@@ -104,8 +104,10 @@ client.on('message', async message => {
             var about = new Discord.RichEmbed()
             .setTitle('About')
             .setDescription('Mythcord is a open source Discord bot with less fun and moderations features, written in Node.js')
-            .addField('More', '[Discord Server](https://discord.gg/4dMTw2H) | [Invite Bot](https://discordapp.com/api/oauth2/authorize?client_id=505163391271436299&permissions=8&scope=bot) | [Github](http://github.com/Implasher/Mythcord) | [Implasus](http://github.com/Implasher/Implasus) | [YouTube](http://youtube.com/Zadezter) | [Twitter](http://twitter.com/Zadezter)')
-            .setColor('DARK')
+            .addField('Creator', '**Zadezter [#0207]**')
+            .addField('Country', '🇲🇾 | __Malaysia__')
+            .addField('More', '[Discord Server](https://discord.gg/4dMTw2H) | [Invite Bot](https://discordapp.com/api/oauth2/authorize?client_id=505699657066741785&permissions=8&scope=bot) | [Github](http://github.com/Implasher/Mythcord) | [Implasus](http://github.com/Implasher/Implasus) | [YouTube](http://youtube.com/Zadezter) | [Twitter](http://twitter.com/Zadezter)')
+            .setColor('#FFFFFF')
             sendEmbed(message.channel, about);
             break;
                   
@@ -135,7 +137,7 @@ client.on('message', async message => {
             case 'help':
             message.reply('The command was sent to your Direct Message. Tap this reaction to delete this message.')
             .then(function (message) {
-              message.react('🇲🇾').then(() => message.react('⏳'));
+              message.react('🇲🇾').then(() => message.react('⏳')).then(() => message.react('🇸🇬'));
             }).catch(function() {});
             var random = Math.floor(Math.random() * config.helpFooter.length);
             var help = new Discord.RichEmbed()
@@ -148,7 +150,7 @@ client.on('message', async message => {
               .addField('/gayrate <@user>', 'Mention user to show the gay percentage rate!')
               .addField('/ping', 'Check your connection status with the command.')
               .addField('/say', 'Say something and the bot will repeat to say.')
-              .addField('/about', 'There are less about this bot and more.')
+              .addField('/about', 'Check out a less about and more informations.')
               .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});
            break;

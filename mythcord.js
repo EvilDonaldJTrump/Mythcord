@@ -127,7 +127,7 @@ client.on('message', async message => {
               message.react('🇲🇾')
               const emojis = (reaction) => {
                 return ['🇲🇾'].includes(reaction.emoji.name) && message.author.id;
-              };
+              }
               message.awaitReactions(emojis, {max: 1})
               .then(collected => {
               const reaction = collected.first();

@@ -190,7 +190,6 @@ client.on('message', async message => {
                       .addField('🖋 MOTD', '```' + resources.body.motd + '```')
                       .addField('💽 Software', '```' + resources.body.software + '```')
                       .addField('💻 Game Version', '```' + resources.body.version + '```')
-		      .addField('🔒 Whitelist', '' + resources.body.whitelist + '```')
                       .addField('🖇 Protocol', '```' + resources.body.protocol + '```')
                       .addField('🌎 Map', '```' + resources.body.map + '```')
                       .addField('👥 Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')

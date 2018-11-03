@@ -189,8 +189,6 @@ client.on('message', async message => {
 		      .setDescription('**IP**: __' + bedrockMsg[1] + '__ | **Port**: __' + bedrockMsg[2] + '__')
                       .addField('🖋 MOTD', '```' + resources.body.motd + '```')
                       .addField('💽 Software', '```' + resources.body.software + '```')
-		      // .addField('🕹 Game Type', '```' + resources.body.game.type + '```')
-		      // .addField('🎲 Game Name', '```' + resources.body.game.id + '```')
                       .addField('💻 Game Version', '```' + resources.body.version + '```')
 		      .addField('🔒 Whitelist', '' + resources.body.whitelist + '```')
                       .addField('🖇 Protocol', '```' + resources.body.protocol + '```')

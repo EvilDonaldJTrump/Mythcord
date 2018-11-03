@@ -170,6 +170,7 @@ client.on('message', async message => {
                      .setTitle('Bedrock Query Error')
                      .setDescription('❌ You have entered a invalid IP address/port or the server is currently offline!')
                      .setColor('RANDOM')
+		     .setFooter(`${message.author.avatarURL}`)
                   sendEmbed(message.channel, errorStatus);
                   return;
                 }
@@ -191,7 +192,7 @@ client.on('message', async message => {
                       .addField('👥 Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')
                       .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
                       .setColor('RANDOM')
-		      .setFooter('Minecraft: Bedrock Edition | Minecraft: Windows 10 Edition')
+		      .setFooter('Minecraft: Bedrock / Windows 10 Edition')
                     sendEmbed(message.channel, query);
                  } else {
                     message.reply('Bedrock Query Error: There is a problem to send a Query API request. Please try again later.')

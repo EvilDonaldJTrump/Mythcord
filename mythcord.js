@@ -101,7 +101,7 @@ client.on('message', async message => {
             break;
                   
             case 'about':
-            if (!arguments[0]) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
+            if (arguments[0] && member) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
             var about = new Discord.RichEmbed()
               .setTitle('About')
               .setDescription('Mythcord is a open source Discord bot with less fun and moderations features, written in Node.js')
@@ -109,7 +109,7 @@ client.on('message', async message => {
               .addField('Country', '🇲🇾 | __Malaysia__')
               .addField('More', '[Discord Server](https://discord.gg/4dMTw2H) | [Invite Bot](https://discordapp.com/api/oauth2/authorize?client_id=505699657066741785&permissions=8&scope=bot) | [Mythcord](http://github.com/Implasher/Mythcord) | [Implasus](http://github.com/Implasher/Implasus) | [YouTube](http://youtube.com/Zadezter) | [Twitter](http://twitter.com/Zadezter)')
               .setColor('#FFFFFF')
-              .setFooter('Mythcord have a rules for you to not forking this bot project in Github.')
+              .setFooter('WARNING: Do not copy and paste code from original Mythcord source in Github.')
             sendEmbed(message.channel, about);
             break;
                   

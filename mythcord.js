@@ -81,8 +81,15 @@ client.on('message', async message => {
         
             case '8ball':
             if (!arguments[0]) return message.reply('Sorry, you sent a blank text. So I cannot answer. :/');
-            var random = Math.floor(Math.random() * config.eightBall.length);
-              message.reply(config.eightBall[random]);
+            var ballMsg = message.content.toLowerCase().split(" ");
+            unirest.get(`https://8ball.delegator.com/magic/JSON/${encodeURIComponent(ballMsg.content.replace(ballMsg[0] + " ", ""))}`)
+            .header("Accept", "application/json").end(resources => {
+              if (resources.status == 200) {
+                message.reply(resources.body.magic.answer);
+              } else {
+                message.reply("Error: Failed to fetch 8ball answer.");
+              }
+            });
             break;
                   
             case 'gayrate':
@@ -203,7 +210,8 @@ client.on('message', async message => {
               .addField('/ping', 'Check your connection status with the command.')
               .addField('/say', 'Say something and the bot will repeat to say.')
               .addField('/about', 'Check out a less about and more informations.')
-              .addField('/bedrock <ip> <port>', 'Check your query server based in Minecraft: Bedrock / Windows 10 Edition')
+              .addField('/bedrock <ip> [port]', 'Check your server in query for Minecraft: Bedrock / Windows 10 Edition')
+	      .addField('
               .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});
            break;

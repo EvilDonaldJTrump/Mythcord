@@ -80,14 +80,14 @@ client.on('message', async message => {
             break;
         
             case '8ball':
-            if (!arguments[0]) return message.reply('Sorry, you sent a blank text. So I cannot answer. :/');
             var ballMsg = message.content.toLowerCase().split(" ");
+            if (!ballMsg[0]) return message.reply('Sorry, you sent a blank text. So I cannot answer. :/');
             unirest.get(`https://8ball.delegator.com/magic/JSON/${encodeURIComponent(ballMsg.content.replace(ballMsg[0] + " ", ""))}`)
             .header("Accept", "application/json").end(resources => {
               if (resources.status == 200) {
                 message.reply(resources.body.magic.answer);
               } else {
-                message.reply("Error: Failed to fetch 8ball answer.");
+                message.reply('Error: Failed to fetch 8ball answer.');
               }
             });
             break;
@@ -154,42 +154,43 @@ client.on('message', async message => {
             var bedrockMsg = message.content.toLowerCase().split(" ");
             if (bedrockMsg[1] == null) return message.reply('Command usage: /bedrock <ip> [port]')
             if (bedrockMsg[2] == null) bedrockMsg[2] = 19132;
-            unirest.get('https://use.gameapis.net/mcpe/query/extensive/' + bedrockMsg[1] + ':' + bedrockMsg[2]).header("Accept", "application/json").end(resources => {
-            if (resources.status == 200){
-              if (resources.body.error != null){
-		var errorStatus = new Discord.RichEmbed()
-                   .setTitle('Bedrock Query Error')
-                   .setDescription('❌ You have entered a invalid IP address/port or the server is currently offline!')
-                   .setColor('RANDOM')
-                 sendEmbed(message.channel, errorStatus);
-                 return;
-              }
-              if (resources.body.list == null){ 
-		resources.body.list = ['None'];
-              } else if (resources.body.list.join(', ').length > 1024) resources.body.list = ['Too limit!'];
+            unirest.get('https://use.gameapis.net/mcpe/query/extensive/' + bedrockMsg[1] + ':' + bedrockMsg[2])
+            .header("Accept", "application/json").end(resources => {
+              if (resources.status == 200){
+                if (resources.body.error != null){
+                  var errorStatus = new Discord.RichEmbed()
+                     .setTitle('Bedrock Query Error')
+                     .setDescription('❌ You have entered a invalid IP address/port or the server is currently offline!')
+                     .setColor('RANDOM')
+                  sendEmbed(message.channel, errorStatus);
+                  return;
+                }
+                if (resources.body.list == null){ 
+                  resources.body.list = ['None'];
+                } else if (resources.body.list.join(', ').length > 1024) resources.body.list = ['Too limit!'];
                 if (resources.body.plugins == null){ 
                   resources.body.plugins = ['None'];
-              } else if (typeof resources.body.plugins == "string"){ resources.body.plugins = [resources.body.plugins];
-              } else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
-                  var query = new Discord.RichEmbed()
-		    .setTitle('Bedrock Query')
-		    .setDescription('IP: ' + bedrockMsg[1] + ' | Port: ' + bedrockMsg[2])
-                    .addField('🖋 MOTD', '```' + resources.body.motd + '```')
-                    .addField('💽 Software', '```' + resources.body.software + '```')
-                    .addField('💻 Game Version', '```' + resources.body.version + '```')
-                    .addField('🖇 Protocol', '```' + resources.body.protocol + '```')
-                    .addField('🌎 Map', '```' + resources.body.map + '```')
-                    .addField('👥 Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')
-                    .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
-                    .setColor('RANDOM')
-		    .setFooter('Minecraft: Bedrock Edition | Minecraft: Windows 10 Edition')
-                  sendEmbed(message.channel, query);
-		} else {
-                   message.reply('Bedrock Query Error: There is a problem to send a Query API request. Please try again later.')
-                   .then(function (message) {
-                     message.react('❌')
-                   }).catch(function() {});
-		}
+                } else if (typeof resources.body.plugins == "string"){ resources.body.plugins = [resources.body.plugins];
+                } else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
+                    var query = new Discord.RichEmbed()
+		      .setTitle('Bedrock Query')
+		      .setDescription('IP: ' + bedrockMsg[1] + ' | Port: ' + bedrockMsg[2])
+                      .addField('🖋 MOTD', '```' + resources.body.motd + '```')
+                      .addField('💽 Software', '```' + resources.body.software + '```')
+                      .addField('💻 Game Version', '```' + resources.body.version + '```')
+                      .addField('🖇 Protocol', '```' + resources.body.protocol + '```')
+                      .addField('🌎 Map', '```' + resources.body.map + '```')
+                      .addField('👥 Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')
+                      .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
+                      .setColor('RANDOM')
+		      .setFooter('Minecraft: Bedrock Edition | Minecraft: Windows 10 Edition')
+                    sendEmbed(message.channel, query);
+                 } else {
+                    message.reply('Bedrock Query Error: There is a problem to send a Query API request. Please try again later.')
+                    .then(function (message) {
+                      message.react('❌')
+                    }).catch(function() {});
+                 }
             });
             break;
                 

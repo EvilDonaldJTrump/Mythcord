@@ -135,6 +135,7 @@ client.on('message', async message => {
                   message.delete();
                 } else {
                   message.delete();
+                }
               });
             }).catch(function() {});
             var random = Math.floor(Math.random() * config.helpFooter.length);

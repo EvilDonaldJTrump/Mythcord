@@ -186,11 +186,11 @@ client.on('message', async message => {
                 } else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
                     var query = new Discord.RichEmbed()
 		      .setTitle('Bedrock Query')
-		      .setDescription('**IP**: ' + bedrockMsg[1] + ' | **Port**: ' + bedrockMsg[2])
+		      .setDescription('**IP**: __' + bedrockMsg[1] + '__ | **Port**: __' + bedrockMsg[2] + '__')
                       .addField('🖋 MOTD', '```' + resources.body.motd + '```')
                       .addField('💽 Software', '```' + resources.body.software + '```')
-		      .addField('🕹 Game Type', '```' + resources.body.gametype + '```')
-		      .addField('🎲 Game Name', '```' + resources.body.gameId + '```')
+		      .addField('🕹 Game Type', '```' + resources.body.game.type + '```')
+		      .addField('🎲 Game Name', '```' + resources.body.game.id + '```')
                       .addField('💻 Game Version', '```' + resources.body.version + '```')
                       .addField('🖇 Protocol', '```' + resources.body.protocol + '```')
                       .addField('🌎 Map', '```' + resources.body.map + '```')
@@ -198,7 +198,7 @@ client.on('message', async message => {
                       .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
                       .setColor('RANDOM')
 		      .setTimestamp(new Date())
-		      .setFooter(`🔒 Whitelist:`, `${resources.body.whitelist}`);
+		      .setFooter(`🔒 Whitelist: ${resources.body.whitelist}`);
                     sendEmbed(message.channel, query);
                  } else {
                     message.reply('Bedrock Query Error: There is a problem to send a Query API request. Please try again later.')

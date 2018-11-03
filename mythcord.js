@@ -14,6 +14,7 @@ var request = require('request');
 
 const util = require('util');
 const crypto = require('crypto');
+const unirest = require('unirest');
 
 const DiscordRPC = require('discord-rpc');
 const rich = new DiscordRPC.Client({transport: 'ipc'});
@@ -100,14 +101,15 @@ client.on('message', async message => {
             break;
                   
             case 'about':
-            if (!arguments[0] && member) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
+            if (!arguments[0] || member) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
             var about = new Discord.RichEmbed()
             .setTitle('About')
             .setDescription('Mythcord is a open source Discord bot with less fun and moderations features, written in Node.js')
             .addField('Creator', '**Zadezter [#0207]**')
             .addField('Country', '🇲🇾 | __Malaysia__')
-            .addField('More', '[Discord Server](https://discord.gg/4dMTw2H) | [Invite Bot](https://discordapp.com/api/oauth2/authorize?client_id=505699657066741785&permissions=8&scope=bot) | [Github](http://github.com/Implasher/Mythcord) | [Implasus](http://github.com/Implasher/Implasus) | [YouTube](http://youtube.com/Zadezter) | [Twitter](http://twitter.com/Zadezter)')
+            .addField('More', '[Discord Server](https://discord.gg/4dMTw2H) | [Invite Bot](https://discordapp.com/api/oauth2/authorize?client_id=505699657066741785&permissions=8&scope=bot) | [Mythcord](http://github.com/Implasher/Mythcord) | [Implasus](http://github.com/Implasher/Implasus) | [YouTube](http://youtube.com/Zadezter) | [Twitter](http://twitter.com/Zadezter)')
             .setColor('#FFFFFF')
+            .setFooter('Mythcord have a rules for you to not forking this bot project in Github.')
             sendEmbed(message.channel, about);
             break;
                   
@@ -133,6 +135,42 @@ client.on('message', async message => {
             .setFooter(`Status: ${message.author.username}`, `${message.author.avatarURL}`);
             sendEmbed(message.channel, pingRich);
             break;
+                  
+            case 'bedrock':
+			if (arguments[1] == null) return message.reply('The command usage is: /bedrock <ip> [port]')
+            if (arguments[2] == null) arguments[2] = 19132;
+			unirest.get('https://use.gameapis.net/mcpe/query/extensive/' + arguments[1] + ':' + arguments[2]).header("Accept", "application/json").end(resources => {
+            if (resources.status == 200){
+              if (resources.body.error != null){
+                var errorStatus = new Discord.RichEmbed()
+                .setTitle('Error')
+                .setDescription('You were entered a invalid IP address/Port or the server is currently offline')
+                .setColor('RANDOM')
+                sendEmbed(message.channel, errorStatus);
+                return;
+              }
+              if (resources.body.list == null){ 
+				resources.body.list = ['None'];
+              } else if (resources.body.list.join(', ').length > 1024) resources.body.list = ['Too limit!'];
+				if (resources.body.plugins == null){ 
+                  resources.body.plugins = ['None'];
+				} else if (typeof resources.body.plugins == "string"){ resources.body.plugins = [resources.body.plugins];
+					} else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
+                      var query = new Discord.RichEmbed()
+                      .setTitle(resources.body.motd)
+                      .addField('Software', resources.body.software)
+                      .addField('Version', resources.body.version)
+                      .addField('Protocol', resources.body.protocol)
+                      .addField('Map', resources.body.map)
+                      .addField('Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', resources.body.list.join(', '))
+                      .addField('Plugins', resources.body.plugins.join(', '))
+                      sendEmbed(message.channel, query)
+					});
+				} else {
+                    message.reply('There is a problem to send a Query API request. Please try again later.')
+				}
+			});
+			break;
                 
             case 'help':
             message.reply('The command was sent to your Direct Message.')
@@ -151,6 +189,7 @@ client.on('message', async message => {
               .addField('/ping', 'Check your connection status with the command.')
               .addField('/say', 'Say something and the bot will repeat to say.')
               .addField('/about', 'Check out a less about and more informations.')
+              .addField('/bedrock <ip> <port>', 'Check your query server based in Minecraft: Bedrock / Windows 10')
               .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});
            break;

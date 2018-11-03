@@ -124,9 +124,7 @@ client.on('message', async message => {
             case 'help':
             message.reply('The command was sent to your Direct Message. Go see it.')
             .then(function (message) {
-              message.react('⏭')
-              message.react('🌀')
-              message.react('⏮')
+              message.react('▶', '🇲🇾', '◀')
             }).catch(function() {});
             var random = Math.floor(Math.random() * config.helpFooter.length);
             var help = new Discord.RichEmbed()

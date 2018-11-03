@@ -123,6 +123,11 @@ client.on('message', async message => {
                 
             case 'help':
             message.reply('The command was sent to your Direct Message. Go see it.');
+            .then(function (message) {
+              message.react('⏭')
+              message.react('🌀')
+              message.react('⏮')
+            }).catch(function() {});
             var random = Math.floor(Math.random() * config.helpFooter.length);
             var help = new Discord.RichEmbed()
               .setTitle('Commands')
@@ -169,7 +174,7 @@ rich.on('ready', () => {
                  partyMax: 50,
                  startTimestamp: date1,
                  endTimestamp: date2
-        }).then(console.log('Rich Presence has completely set!')).catch(err => { });
+        }).then(console.log('Rich Presence has completely set!')).catch(error => { });
 
         if (true) {
                 setInterval(() => {
@@ -190,7 +195,7 @@ rich.on('ready', () => {
                          partyMax: 50,
                          startTimestamp: date1,
                          endTimestamp: date2
-                }).then(console.log('Updated Rich Presence!')).catch(err => { });
+                }).then(console.log('Updated Rich Presence!')).catch(error => { });
           }, (3600 * 1000));
        }
 });

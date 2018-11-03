@@ -104,7 +104,7 @@ client.on('message', async message => {
             var about = new Discord.RichEmbed()
             .setTitle('About')
             .setDescription('Mythcord is a open source Discord bot with less fun and moderations features, written in Node.js')
-            .addTitle('More', '[Discord Server](https://discord.gg/4dMTw2H) | [Invite Bot](https://discordapp.com/api/oauth2/authorize?client_id=505163391271436299&permissions=8&scope=bot) | [Github](http://github.com/Implasher/Mythcord) | [Implasus](http://github.com/Implasher/Implasus) | [YouTube](http://youtube.com/Zadezter) | [Twitter](http://twitter.com/Zadezter)')
+            .addField('More', '[Discord Server](https://discord.gg/4dMTw2H) | [Invite Bot](https://discordapp.com/api/oauth2/authorize?client_id=505163391271436299&permissions=8&scope=bot) | [Github](http://github.com/Implasher/Mythcord) | [Implasus](http://github.com/Implasher/Implasus) | [YouTube](http://youtube.com/Zadezter) | [Twitter](http://twitter.com/Zadezter)')
             .setColor('DARK')
             sendEmbed(message.channel, about);
             break;
@@ -148,6 +148,7 @@ client.on('message', async message => {
               .addField('/gayrate <@user>', 'Mention user to show the gay percentage rate!')
               .addField('/ping', 'Check your connection status with the command.')
               .addField('/say', 'Say something and the bot will repeat to say.')
+              .addField('/about', 'There are less about this bot and more.')
               .setFooter(config.helpFooter[random]);
             message.author.send("", {embed: help});
            break;

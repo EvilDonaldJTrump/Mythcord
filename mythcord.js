@@ -101,7 +101,7 @@ client.on('message', async message => {
             break;
                   
             case 'about':
-            if (!arguments[0] || member) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
+            if (!arguments[0]) return message.reply('Shame on you! You cannot mention user or bot with this command. Also, you are being in trouble.');
             var about = new Discord.RichEmbed()
               .setTitle('About')
               .setDescription('Mythcord is a open source Discord bot with less fun and moderations features, written in Node.js')
@@ -174,7 +174,7 @@ client.on('message', async message => {
                     .addField('🌎 Map', '```' + resources.body.map + '```')
                     .addField('👥 Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')
                     .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
-		    .setColor('RANDOM')
+                    .setColor('RANDOM')
 		    .setFooter('Minecraft: Bedrock Edition | Windows 10 Edition')
                   sendEmbed(message.channel, query);
 		} else {

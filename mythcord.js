@@ -137,9 +137,9 @@ client.on('message', async message => {
             break;
                   
             case 'bedrock':
-			if (arguments[1] == null) return message.reply('The command usage is: /bedrock <ip> [port]')
+            if (arguments[1] == null) return message.reply('The command usage is: /bedrock <ip> [port]')
             if (arguments[2] == null) arguments[2] = 19132;
-			unirest.get('https://use.gameapis.net/mcpe/query/extensive/' + arguments[1] + ':' + arguments[2]).header("Accept", "application/json").end(resources => {
+            unirest.get('https://use.gameapis.net/mcpe/query/extensive/' + arguments[1] + ':' + arguments[2]).header("Accept", "application/json").end(resources => {
             if (resources.status == 200){
               if (resources.body.error != null){
                 var errorStatus = new Discord.RichEmbed()
@@ -150,27 +150,27 @@ client.on('message', async message => {
                 return;
               }
               if (resources.body.list == null){ 
-				resources.body.list = ['None'];
+		resources.body.list = ['None'];
               } else if (resources.body.list.join(', ').length > 1024) resources.body.list = ['Too limit!'];
-				if (resources.body.plugins == null){ 
+                if (resources.body.plugins == null){ 
                   resources.body.plugins = ['None'];
-				} else if (typeof resources.body.plugins == "string"){ resources.body.plugins = [resources.body.plugins];
-					} else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
-                      var query = new Discord.RichEmbed()
-                      .setTitle(resources.body.motd)
-                      .addField('Software', resources.body.software)
-                      .addField('Version', resources.body.version)
-                      .addField('Protocol', resources.body.protocol)
-                      .addField('Map', resources.body.map)
-                      .addField('Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', resources.body.list.join(', '))
-                      .addField('Plugins', resources.body.plugins.join(', '))
-                      sendEmbed(message.channel, query)
-					});
-				} else {
+		} else if (typeof resources.body.plugins == "string"){ resources.body.plugins = [resources.body.plugins];
+		} else if(resources.body.plugins.join(', ').length > 1024) resources.body.plugins = ['Too limit!'];
+                  var query = new Discord.RichEmbed()
+                  .setTitle(resources.body.motd)
+                  .addField('Software', resources.body.software)
+                  .addField('Version', resources.body.version)
+                  .addField('Protocol', resources.body.protocol)
+                  .addField('Map', resources.body.map)
+                  .addField('Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', resources.body.list.join(', '))
+                  .addField('Plugins', resources.body.plugins.join(', '))
+                  sendEmbed(message.channel, query)
+		});
+		} else {
                     message.reply('There is a problem to send a Query API request. Please try again later.')
-				}
-			});
-			break;
+		}
+            });
+            break;
                 
             case 'help':
             message.reply('The command was sent to your Direct Message.')

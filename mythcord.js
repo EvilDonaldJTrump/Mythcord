@@ -128,10 +128,10 @@ client.on('message', async message => {
               const emojis = (reaction) => {
                 return ['🇲🇾'].includes(reaction.emoji.name) && message.author.id;
               };
-              message.awaitReactions(emojis, {max: 1})
+              message.awaitReactions(emojis, {max: 1, time: 10000000000000})
               .then(collected => { 
                 const reaction = collected.first();
-                if (reaction.emoji.name === '🇲🇾', 2) { 
+                if (reaction.emoji.name === '🇲🇾') { 
                   message.delete();
                 }
               });

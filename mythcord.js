@@ -128,7 +128,7 @@ client.on('message', async message => {
               const emojis = (reaction, users) => {
                 return ['🇲🇾', '🇲🇾'].includes(reaction.emoji.name) && users.id === message.author.id;
               };
-              message.awaitReactions(emojis, {max: 2})
+              message.awaitReactions(emojis, {max: 1})
               .then(collected => { 
                 const reaction = collected.first();
                 if (reaction.emoji.name === '🇲🇾') { 

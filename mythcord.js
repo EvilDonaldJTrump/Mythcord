@@ -177,6 +177,9 @@ client.on('message', async message => {
                   sendEmbed(message.channel, errorStatus);
                   return;
                 }
+		if (resources.body.whitelist == null){
+                  resources.body.whitelist = ['Disabled'];
+                } else if (resources.body.whitelist == "on") resources.body.whitelist = ['Enabled'];
                 if (resources.body.list == null){ 
                   resources.body.list = ['None'];
                 } else if (resources.body.list.join(', ').length > 1024) resources.body.list = ['Too limit!'];
@@ -187,7 +190,7 @@ client.on('message', async message => {
                     var query = new Discord.RichEmbed()
 		      .setTitle('Bedrock Query')
 		      .setDescription('**IP**: __' + bedrockMsg[1] + '__ | **Port**: __' + bedrockMsg[2] + '__')
-                      .addField('🖋 MOTD', '```' + resources.body.motd + '```')
+                      .addField('🖋 Message Of The Day', '```' + resources.body.motd + '```')
                       .addField('💽 Software', '```' + resources.body.software + '```')
                       .addField('💻 Game Version', '```' + resources.body.version + '```')
                       .addField('🖇 Protocol', '```' + resources.body.protocol + '```')
@@ -196,7 +199,7 @@ client.on('message', async message => {
                       .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
                       .setColor('RANDOM')
 		      .setTimestamp(new Date())
-		      .setFooter(`🔒 Whitelist:  ${resources.body.whitelist == 'on'}`);
+		      .setFooter(`🔒 Whitelist: ${resources.body.whitelist}`);
                     sendEmbed(message.channel, query);
                  } else {
                     message.reply('Bedrock Query Error: There is a problem to send a Query API request. Please try again later.')

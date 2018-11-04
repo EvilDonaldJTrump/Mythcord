@@ -170,10 +170,10 @@ client.on('message', async message => {
                 if (resources.body.error != null){
                   var errorStatus = new Discord.RichEmbed()
                      .setTitle('Bedrock Query Error')
-                     .setDescription('❌ You have entered a invalid IP address/port or the server is currently offline!')
+                     .setDescription('❌ You have entered a invalid **IP** and **Port**, or this server is __offline__!')
                      .setColor('RANDOM')
 		     .setTimestamp(new Date())
-		     .setFooter(`Try again later, ${message.author.username}`, `${message.author.avatarURL}`)
+		     .setFooter(`Please try again later, ${message.author.username}`, `${message.author.avatarURL}`)
                   sendEmbed(message.channel, errorStatus);
                   return;
                 }
@@ -191,13 +191,12 @@ client.on('message', async message => {
                       .addField('💽 Software', '```' + resources.body.software + '```')
                       .addField('💻 Game Version', '```' + resources.body.version + '```')
                       .addField('🖇 Protocol', '```' + resources.body.protocol + '```')
-		      .addField('🔒 Whitelist', '```' + resources.body.whitelist === '``on```' + '```')
                       .addField('🌎 Map', '```' + resources.body.map + '```')
                       .addField('👥 Players [' + resources.body.players.online + '/' + resources.body.players.max + ']', '```' + resources.body.list.join(', ') + '```')
                       .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
                       .setColor('RANDOM')
 		      .setTimestamp(new Date())
-		      .setFooter('Minecraft: Bedrock / Windows 10 Edition');
+		      .setFooter(`🔒 Whitelist: ` + resources.body.whitelist == `on`);
                     sendEmbed(message.channel, query);
                  } else {
                     message.reply('Bedrock Query Error: There is a problem to send a Query API request. Please try again later.')

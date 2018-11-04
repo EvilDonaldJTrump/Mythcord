@@ -179,7 +179,9 @@ client.on('message', async message => {
                 }
 		if (resources.body.whitelist == null){
                   resources.body.whitelist = ['Disabled'];
-                } else if (resources.body.whitelist == "on") resources.body.whitelist = ['Enabled'];
+                } else {
+                  resources.body.whitelist = ['Enabled'];
+                }
                 if (resources.body.list == null){ 
                   resources.body.list = ['None'];
                 } else if (resources.body.list.join(', ').length > 1024) resources.body.list = ['Too limit!'];
@@ -190,7 +192,7 @@ client.on('message', async message => {
                     var query = new Discord.RichEmbed()
 		      .setTitle('Bedrock Query')
 		      .setDescription('**IP**: __' + bedrockMsg[1] + '__ | **Port**: __' + bedrockMsg[2] + '__')
-                      .addField('🖋 Message Of The Day', '```' + resources.body.motd + '```')
+                      .addField('🖋 MOTD', '```' + resources.body.motd + '```')
                       .addField('💽 Software', '```' + resources.body.software + '```')
                       .addField('💻 Game Version', '```' + resources.body.version + '```')
                       .addField('🖇 Protocol', '```' + resources.body.protocol + '```')

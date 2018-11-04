@@ -196,7 +196,7 @@ client.on('message', async message => {
                       .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
                       .setColor('RANDOM')
 		      .setTimestamp(new Date())
-		      .setFooter(`🔒 Whitelist: ` + resources.body.whitelist == `on`);
+		      .setFooter(`🔒 Whitelist:  ${resources.body.whitelist == 'on'}`);
                     sendEmbed(message.channel, query);
                  } else {
                     message.reply('Bedrock Query Error: There is a problem to send a Query API request. Please try again later.')

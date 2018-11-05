@@ -32,15 +32,15 @@ client.on('ready', () => {
         const onInterval = Math.floor(Math.random() * (activity.activities.length - 1) + 1);
         client.user.setActivity(activity.activities[onInterval], {type: 'PLAYING'});
     }, 9000);
-    console.log("Mythcord had finally connected via services.");
+    console.log("Mythcord had finally connected to services.");
 });
 
 client.on('guildCreate', guild => {
 	console.log(`Mythcord have been added to ${guild.name}`)
         guild.defaultChannel.send('✔ Thank you for added me to your server! My name is __**Mythcord**__, and I am the bot here with less fun and moderations features are useful for you!')
-        guild.defaultChannel.send('🤔 To get started, please type `/help` then send message to see available commands!')
+        guild.defaultChannel.send('🤔 To get started, please type `/help` then send message to see available commands in your Direct Message!')
         guild.createRole({name:'¤ Muted ¤'}).catch(error => { 
-                guild.defaultChannel.send('⁉️ I have no permission to create **muted** role. Please re-invite me with proper permissions.')
+                guild.defaultChannel.send('⁉️ I have no permission to create __**muted**__ role. Please re-invite me with adminstrator or proper permissions.')
                 guild.defaultChannel.send('😒 Leaving the server automatically...')
                 guild.leave();
         });
@@ -242,14 +242,11 @@ client.on('message', async message => {
               .addField('/say', 'Say something and the bot will repeat to say.')
               .addField('/about', 'Check out a less about and more informations.')
               .addField('/bedrock <ip> [port]', 'Minecraft: Bedrock / Windows 10 Edition in checking server query!')
-	    message.author.send("", {embed: help});
-	    var help2 = Discord.RichEmbed()
-	      .setColor('RANDOM')
 	      .addField('/music', 'See available music commands. [Coming Soon]')
 	      .addField('/mute <@user> [reason]', 'Mute the mentioned user with the moderation command. [Coming Soon]')
 	      .addField('/unmute <@user>', 'Unmute the mentioned user with the moderation command. [Coming Soon]')
               .setFooter(config.helpFooter[random]);
-            message.author.send("", {embed: help2});
+            message.author.send("", {embed: help});
            break;
          default:
           if (message.guild.id == process.env.MYTHCORD_GUILD) {
@@ -268,7 +265,8 @@ function sendEmbed(channel, embed) {
   });
 }
 
-rich.on('ready', () => {
+
+/** rich.on('ready', () => {
         console.log("Setting Rich Presence...");
 
         rich.setActivity({
@@ -308,4 +306,4 @@ rich.on('ready', () => {
           }, (3600 * 1000));
        }
 });
-rich.login(process.env.SECRET).catch(console.error);
+rich.login(process.env.SECRET).catch(console.error); **/

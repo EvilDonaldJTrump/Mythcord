@@ -40,7 +40,7 @@ client.on('guildCreate', guild => {
         guild.defaultChannel.send('🤔 To get started, please type `/help` and send message to see available commands!')
 	guild.createRole({name:'• Muted •'}).catch(error => { 
 		guild.defaultChannel.send('⁉️ I have no permission to create **muted** role. Please re-invite me with proper permissions.')
-                guild.defaultChannel.send('😒 Leave the server automatically...')
+                guild.defaultChannel.send('😒 Leaving the server automatically...')
                 guild.leave();
         });
 });
@@ -187,9 +187,6 @@ client.on('message', async message => {
                   sendEmbed(message.channel, errorStatus);
                   return;
                 }
-		if (resources.body.whitelist == "on"){
-                  resources.body.whitelist = ['Disabled'] : ['Enabled'];
-                }
                 if (resources.body.list == null){ 
                   resources.body.list = ['None'];
                 } else if (resources.body.list.join(', ').length > 1024) resources.body.list = ['Too limit!'];
@@ -209,7 +206,7 @@ client.on('message', async message => {
                       .addField('📂 Plugins', '```' + resources.body.plugins.join(', ') + '```')
                       .setColor('RANDOM')
 		      .setTimestamp(new Date())
-		      .setFooter(`🔒 Whitelist: ${resources.body.whitelist}`);
+		      .setFooter(`🔒 Whitelist: ${resources.body.whitelist == 'on'}`);
                     sendEmbed(message.channel, query);
                  } else {
                     message.reply('Bedrock Query Error: There is a problem to send a Query API request. Please try again later.')

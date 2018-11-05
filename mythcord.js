@@ -35,6 +35,11 @@ client.on('ready', () => {
     console.log("Mythcord had finally connected via services.");
 });
 
+client.on('guildCreate', guild => {
+	guild.defaultChannel.send('✔ Thank you for added me to your server! My name is __**Mythcord**__, and I am the bot here with less fun and moderations features are useful for you!')
+        guild.defaultChannel.send('🤔 To get started, please type `/help` and send message to see available commands!')
+});
+
 client.on('message', async message => {
     if (message.author.bot) return;
     if (string(message.content).startsWith(process.env.MYTHCORD_PREFIX)) {
@@ -177,10 +182,10 @@ client.on('message', async message => {
                   sendEmbed(message.channel, errorStatus);
                   return;
                 }
-		if (resources.body.whitelist == null){
-                  resources.body.whitelist = ['Disabled'];
+		if (resources.body.whitelist == "on"){
+                  resources.body.whitelist == "on" = ['Disabled'];
                 } else {
-                  resources.body.whitelist = ['Enabled'];
+                  resources.body.whitelist == "on" = ['Enabled'];
                 }
                 if (resources.body.list == null){ 
                   resources.body.list = ['None'];
